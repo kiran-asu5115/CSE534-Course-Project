@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.29)  16 OCT 2022 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.29)  17 OCT 2022 22:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -302,21 +302,25 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (D:\Tools\MikTex\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 1552) in paragraph at lines 40--41
+\OT1/ptm/m/n/10 flow be-tween two hosts con-nected via mul-ti-ple rout-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
+<./Screenshots/Project_Proposal_Topology.png, id=1, 563.34465pt x 412.48102pt>
+File: ./Screenshots/Project_Proposal_Topology.png Graphic file (type png)
+<use ./Screenshots/Project_Proposal_Topology.png>
+Package pdftex.def Info: ./Screenshots/Project_Proposal_Topology.png  used on i
+nput line 53.
+(pdftex.def)             Requested size: 259.14168pt x 189.74356pt.
 [1{C:/Users/Kiran S/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 
 ]
-<./Screenshots/INT_Modes_of_Operation.png, id=7, 405.9165pt x 189.1065pt>
-File: ./Screenshots/INT_Modes_of_Operation.png Graphic file (type png)
-<use ./Screenshots/INT_Modes_of_Operation.png>
-Package pdftex.def Info: ./Screenshots/INT_Modes_of_Operation.png  used on inpu
-t line 56.
-(pdftex.def)             Requested size: 202.95775pt x 94.55301pt.
-
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -328,19 +332,19 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2 <./Screenshots/INT_Modes_of_Operation.png>] (CSE534_Project_Proposal.aux) ) 
+[2 <./Screenshots/Project_Proposal_Topology.png>] (CSE534_Project_Proposal.aux)
+ ) 
 Here is how much of TeX's memory you used:
- 4173 strings out of 478338
- 65468 string characters out of 2850293
- 380955 words of memory out of 3000000
- 22590 multiletter control sequences out of 15000+600000
- 496394 words of font info for 74 fonts, out of 8000000 for 9000
+ 4163 strings out of 478338
+ 65443 string characters out of 2850293
+ 378926 words of memory out of 3000000
+ 22580 multiletter control sequences out of 15000+600000
+ 496423 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,62p,1012b,259s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{
-D:/Tools/MikTex/fonts/enc/dvips/base/8r.enc}<D:/Tools/MikTex/fonts/type1/urw/ti
-mes/utmb8a.pfb><D:/Tools/MikTex/fonts/type1/urw/times/utmr8a.pfb>
-Output written on CSE534_Project_Proposal.pdf (2 pages, 85913 bytes).
+ 55i,8n,62p,845b,259s stack positions out of 10000i,1000n,20000p,200000b,80000s
+{D:/Tools/MikTex/fonts/enc/dvips/base/8r.enc}<D:/Tools/MikTex/fonts/type1/urw
+/times/utmr8a.pfb><D:/Tools/MikTex/fonts/type1/urw/times/utmri8a.pfb>
+Output written on CSE534_Project_Proposal.pdf (2 pages, 179129 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
