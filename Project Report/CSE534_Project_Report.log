@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.29)  18 OCT 2022 17:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.29)  26 OCT 2022 18:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./CSE534_Project_Proposal.tex
-(CSE534_Project_Proposal.tex
+**./CSE534_Project_Report.tex
+(CSE534_Project_Report.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-07-04>
 (C:\Users\Kiran S\AppData\Roaming\MiKTeX\tex/latex/ieeetran\IEEEtran.cls
@@ -262,8 +262,8 @@ File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count282
 \l__pdf_internal_box=\box55
 )
-(CSE534_Project_Proposal.aux)
-\openout1 = `CSE534_Project_Proposal.aux'.
+No file CSE534_Project_Report.aux.
+\openout1 = `CSE534_Project_Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -279,7 +279,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
-
 -- Lines per column: 56 (exact).
 (D:\Tools\MikTex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -302,27 +301,49 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (D:\Tools\MikTex\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Underfull \hbox (badness 4303) in paragraph at lines 40--41
+
+LaTeX Warning: Citation `b1' on page 1 undefined on input line 37.
+
+
+LaTeX Warning: Citation `b2' on page 1 undefined on input line 37.
+
+
+LaTeX Warning: Citation `b3' on page 1 undefined on input line 41.
+
+
+LaTeX Warning: Citation `b4' on page 1 undefined on input line 43.
+
+
+LaTeX Warning: Citation `b5' on page 1 undefined on input line 43.
+
+
+LaTeX Warning: Citation `b6' on page 1 undefined on input line 43.
+
+
+Underfull \hbox (badness 4303) in paragraph at lines 46--47
 \OT1/ptm/m/n/10 Pro-grammable Switch Topol-ogy dy-nam-i-cally con-fig-ured
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 40--41
+Underfull \hbox (badness 1552) in paragraph at lines 46--47
 \OT1/ptm/m/n/10 flow be-tween two hosts con-nected via mul-ti-ple rout-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
+
+
+Underfull \vbox (badness 1122) has occurred while \output is active []
 
 <./Screenshots/Project_Proposal_Topology.png, id=1, 563.34465pt x 412.48102pt>
 File: ./Screenshots/Project_Proposal_Topology.png Graphic file (type png)
 <use ./Screenshots/Project_Proposal_Topology.png>
 Package pdftex.def Info: ./Screenshots/Project_Proposal_Topology.png  used on i
-nput line 53.
+nput line 59.
 (pdftex.def)             Requested size: 259.14168pt x 189.74356pt.
-[1{C:/Users/Kiran S/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+ [1{C:/Users/Kiran S/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 
 ]
@@ -337,21 +358,29 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2 <./Screenshots/Project_Proposal_Topology.png>] (CSE534_Project_Proposal.aux)
+[2 <./Screenshots/Project_Proposal_Topology.png>] (CSE534_Project_Report.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 4163 strings out of 478338
- 65443 string characters out of 2850293
- 378926 words of memory out of 3000000
+ 4164 strings out of 478338
+ 65223 string characters out of 2850293
+ 378905 words of memory out of 3000000
  22580 multiletter control sequences out of 15000+600000
- 496423 words of font info for 74 fonts, out of 8000000 for 9000
+ 499733 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,62p,701b,259s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 55i,8n,62p,708b,259s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {D:/Tools/MikTex/fonts/enc/dvips/base/8r.enc}<D:/Tools/MikTex/fonts/type1/urw
-/times/utmr8a.pfb><D:/Tools/MikTex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CSE534_Project_Proposal.pdf (2 pages, 178727 bytes).
+/times/utmb8a.pfb><D:/Tools/MikTex/fonts/type1/urw/times/utmbi8a.pfb><D:/Tools/
+MikTex/fonts/type1/urw/times/utmr8a.pfb><D:/Tools/MikTex/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on CSE534_Project_Report.pdf (2 pages, 196672 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
+ 33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
