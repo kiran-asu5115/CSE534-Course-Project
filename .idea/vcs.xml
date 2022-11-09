@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fabrictestbed-extensions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mflib_fabrictestbed-extensions" vcs="Git" />
   </component>
 </project>

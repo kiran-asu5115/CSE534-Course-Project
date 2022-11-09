@@ -3,7 +3,7 @@ import json
 import traceback
 import datetime
 
-from fablib.fablib import fablib
+from fabrictestbed_extensions.fablib.fablib import fablib
 
 
 def read_config(filename):

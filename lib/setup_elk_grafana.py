@@ -1,7 +1,7 @@
 import os
 
-from mflib.mflib import mflib
-from fablib.fablib import fablib
+from fabrictestbed_extensions.mflib.mflib import mflib
+from fabrictestbed_extensions.fablib.fablib import fablib
 
 
 class SetupELK:
