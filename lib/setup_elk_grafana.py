@@ -2,14 +2,15 @@ import os
 
 from fabrictestbed_extensions.mflib.mflib import mflib
 from fabrictestbed_extensions.fablib.fablib import fablib
+from fabrictestbed_extensions.fablib.fablib import FablibManager as fablib_manager
+
 
 
 class SetupELK:
     def __init__(self, elk_port=10020):
         # The slice name of the slice with which you want to interact.
-        self.slice_name = "MyMonitoredSlice"
-        self.mf = mflib(self.slice_name)
-        self.mf.grafana_tunnel_local_port = elk_port
+        self.slice_name = "Kiran_P4_Test_1"
+        # self.mf.grafana_tunnel_local_port = elk_port
 
 
     def get_elk_info(self):
@@ -80,9 +81,8 @@ class SetupELK:
 class SetupGrafana:
     def __init__(self, port=10010):
         # The slice name of the slice with which you want to interact.
-        self.slice_name = "MyMonitoredSlice"
-        self.mf = mflib(self.slice_name)
-        self.mf.grafana_tunnel_local_port = port
+        self.slice_name = "Kiran_P4_Test_1"
+        # self.mf.grafana_tunnel_local_port = port
 
 
     def get_grafana_info(self):
@@ -110,14 +110,20 @@ class SetupGrafana:
 
 
 class Instrumentize(SetupGrafana, SetupELK):
-    def __init__(self, slice):
+    def __init__(self):
         super().__init__()
-        self.slice = slice
+        slice = fablib.get_slice(name=self.slice_name)
+        self.setup_meas_node(slice)
+        self.mf = mflib(self.slice_name)
+        instrumetize_results = self.mf.instrumentize()
+        self.get_grafana_info()
+        self.get_elf_info()
+        # self.slice = slice
 
 
-    def setup_meas_node(self):
+    def setup_meas_node(self, slice):
         # Add measurement node to topology using static method.
-        mflib.addMeasNode(self.slice)
-        mf = mflib(self.slice_name)
-        instrumetize_results = mf.instrumentize()
+        mflib.addMeasNode(slice)
         print("Done")
+
+c = Instrumentize()
