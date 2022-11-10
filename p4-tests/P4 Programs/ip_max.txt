@@ -1,0 +1,3 @@
+H1: table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.1.0/24 => 0a:35:db:7b:17:13 0
+H2: table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.2.0/24 => 0e:66:ea:f1:5b:83 1
+H3: table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.3.0/24 => 0a:8e:e4:af:40:86 2

@@ -2,7 +2,7 @@ sudo apt-get update
 
 git clone --recursive https://github.com/p4lang/p4c.git
 
-sudo apt-get install -y cmake g++ git automake libtool libgc-dev bison flex libfl-dev libgmp-dev libboost-dev libboost-iostreams-dev libboost-graph-dev llvm pkg-config python python-scapy python-ipaddr python-ply tcpdump doxygen graphviz texlive-full
+sudo apt-get install -y cmake g++ git automake libtool libgc-dev bison flex libfl-dev libgmp-dev libboost-dev libboost-iostreams-dev libboost-graph-dev llvm pkg-config python3 python3-scapy python3-ipaddr python3-ply tcpdump doxygen graphviz texlive-full
 
 git clone https://github.com/protocolbuffers/protobuf.git
 cd protobuf
