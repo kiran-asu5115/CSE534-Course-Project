@@ -3,7 +3,7 @@ import traceback
 
 from fabrictestbed_extensions.mflib.mflib import mflib
 from fabrictestbed_extensions.fablib.fablib import FablibManager
-from ipaddress import ip_address, IPv4Address, IPv6Address, IPv4Network, IPv6Network
+from ipaddress import IPv4Network
 from fablib_utils import slice_builder_utils, node_builder_utils, component_builder_utils, network_builder_utils
 
 
@@ -62,6 +62,9 @@ class SetupSlice:
         # Add measurement node to topology using static method.
         print("Setting up Measurement Node")
         mflib.addMeasNode(self.integrated_slice)
+
+    def delete_slice(self):
+        slice_builder_utils.delete_slice(self.integrated_slice)
 
     def configure_ipv4_subnet(self, address_list):
         try:

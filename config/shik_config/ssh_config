@@ -5,7 +5,7 @@ Host bastion-1.fabric-testbed.net
  User sgupt330_0000024390
  ForwardAgent yes
  Hostname %h
- IdentityFile fabric-bastion-key
+ IdentityFile config/shik_config/fabric-bastion-key
  IdentitiesOnly yes
 Host * !bastion-?.fabric-testbed.net
  ProxyJump sgupt330_0000024390@bastion-1.fabric-testbed.net:22

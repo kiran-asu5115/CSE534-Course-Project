@@ -1,4 +1,7 @@
 {
+  "FABRIC_ORCHESTRATOR_HOST": "orchestrator.fabric-testbed.net",
+  "FABRIC_CREDMGR_HOST": "cm.fabric-testbed.net",
+  "FABRIC_TOKEN_LOCATION": "config/.tokens.json",
   "FABRIC_PROJECT_ID": "6ce270de-788d-4e07-8bae-3206860a6387",
   "FABRIC_BASTION_HOST": "bastion-1.fabric-testbed.net",
   "FABRIC_BASTION_KEY_LOCATION": "config/shik_config/fabric-bastion-key",
