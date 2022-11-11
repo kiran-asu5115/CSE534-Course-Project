@@ -1,10 +1,12 @@
 {
+  "slice_name": "P4DynamicRouting",
+  "site": "TACC",
   "host_config": [
     {
       "hostname": "Host_1",
-      "site": "TACC",
       "ram": 4,
       "disk": 20,
+      "cores": 2,
       "image": "default_ubuntu_20",
       "host_nic": [
         "host_nic_1"
@@ -12,9 +14,9 @@
     },
     {
       "hostname": "Switch_1",
-      "site": "TACC",
       "ram": 8,
       "disk": 100,
+      "cores": 2,
       "image": "default_ubuntu_20",
       "host_nic": [
         "switch_nic_1_conn_h1",
@@ -24,9 +26,9 @@
     },
     {
       "hostname": "Host_2",
-      "site": "TACC",
       "ram": 4,
       "disk": 20,
+      "cores": 2,
       "image": "default_ubuntu_20",
       "host_nic": [
         "host_nic_2"
@@ -34,9 +36,9 @@
     },
     {
       "hostname": "Host_3",
-      "site": "TACC",
       "ram": 4,
       "disk": 20,
+      "cores": 2,
       "image": "default_ubuntu_20",
       "host_nic": [
         "host_nic_3"
@@ -46,6 +48,7 @@
   "conn_config": [
     {
       "name": "C1",
+      "address_list": "192.168.1.0/24",
       "interfaces": [
         "switch_nic_1_conn_h1",
         "host_nic_1"
@@ -53,6 +56,7 @@
     },
     {
       "name": "C2",
+      "address_list": "192.168.2.0/24",
       "interfaces": [
         "switch_nic_1_conn_h2",
         "host_nic_2"
@@ -60,6 +64,7 @@
     },
     {
       "name": "C3",
+      "address_list": "192.168.3.0/24",
       "interfaces": [
         "switch_nic_1_conn_h3",
         "host_nic_3"

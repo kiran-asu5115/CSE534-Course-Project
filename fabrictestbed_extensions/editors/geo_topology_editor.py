@@ -23,7 +23,6 @@
 #
 # Author: Paul Ruth (pruth@renci.org)
 
-import os
 import traceback
 import re
 
@@ -48,12 +47,8 @@ from ipyleaflet import (
     CircleMarker,
     FullScreenControl
 )
-from fabrictestbed.slice_editor import ExperimentTopology, Capacities, ComponentType, ComponentModelType, ServiceType, ComponentCatalog
-from fabrictestbed.slice_editor import (
-    ExperimentTopology,
-    Capacities
-)
-from fabrictestbed.slice_manager import SliceManager, Status, SliceState
+from fabrictestbed.slice_editor import ComponentModelType
+from fabrictestbed.slice_manager import SliceState
 
 from .abc_topology_editor import AbcTopologyEditor
 

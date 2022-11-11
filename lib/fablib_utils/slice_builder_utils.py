@@ -7,21 +7,28 @@ print("Initializing slice_builder_utils -", "FABLib Configuration")
 fablib.show_config()
 
 def get_slice_by_name_or_id(slice_name=None, slice_id=None):
-    if slice_name is None and slice_id is None:
-        slice = None
-    elif slice_name is not None:
-        slice = fablib.get_slice(name=slice_name)
-    else:
-        slice = fablib.get_slice(slice_id=slice_id)
-    return slice
+    try:
+        if slice_name is None and slice_id is None:
+            slice = None
+        elif slice_name is not None:
+            slice = fablib.get_slice(name=slice_name)
+        else:
+            slice = fablib.get_slice(slice_id=slice_id)
+        return slice
+    except Exception as e:
+        return None
 
 # Slice Creation, Submission, Topology Save & Deletion
 def create_slice(slice_name):
+    slice = get_slice_by_name_or_id(slice_name)
     try:
-        slice = fablib.new_slice(slice_name)
+        if not slice:
+            slice = fablib.new_slice(slice_name)
+            return slice
+        print("Slice already submitted with the same name")
     except Exception as e:
         print("slice_builder_utils -", "Exception in Creating Slice:", slice_name, e)
-        slice = None
+        return None
     return slice
 
 def submit_slice(slice, progress=True):
