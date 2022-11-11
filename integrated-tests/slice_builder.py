@@ -1,9 +1,8 @@
 import os
-import json
-import traceback
-import datetime
-
-from fabrictestbed_extensions.fablib.fablib import fablib
+import sys
+from fabrictestbed_extensions.fablib.fablib import FablibManager as fablib_manager
+from fablib_utils import slice_builder_utils, node_builder_utils, component_builder_utils, network_builder_utils
+from mflib_utils.setup_elk_grafana import Instrumentize, MeasurementNode
 
 
 def read_config(filename):
@@ -12,21 +11,14 @@ def read_config(filename):
 
 class SetupSlice:
     def __init__(self, filename):
+        fablib = fablib_manager()
+        # fablib.show_config()
         self.slice_config = read_config(filename)
+        slice_name = "Kiran_Integrated_Test_1"
+        integrated_slice = slice_builder_utils.create_slice(slice_name)
+        integrated_slice = slice_builder_utils.create_slice(slice_name)
         self.default_image = 'default_ubuntu_20'
         self.image_type = 'qcow2'
-        self.cores = 2
-        self.ram = 8
-        self.disk = 10
-        self.slice_name = "MyMonitoredSlice"
-        self.site = "TACC"
-        self.network_name = 'net1'
-        # node1_name = 'Node1'
-        # node2_name = 'Node2'
-        # node3_name = 'Node3'
-        # node1_nic_name = 'nic1'
-        # node2_nic_name = 'nic2'
-        # node3_nic_name = 'nic3'
         print(f"Using slice {self.slice_name} at site {self.site}")
 
     def create_slice(self):

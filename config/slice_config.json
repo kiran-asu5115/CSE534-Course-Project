@@ -1,0 +1,29 @@
+{
+  "host_config": [
+    {
+      "hostname": "Host_1",
+      "site": "TACC",
+      "ram": 4,
+      "disk": 20
+    },
+    {
+      "hostname": "Switch_1",
+      "site": "TACC",
+      "ram": 8,
+      "disk": 100
+    },
+    {
+      "hostname": "Host_2",
+      "site": "TACC",
+      "ram": 4,
+      "disk": 20
+    },
+
+    {
+      "hostname": "Host_3",
+      "site": "TACC",
+      "ram": 4,
+      "disk": 20
+    }
+  ]
+}
