@@ -1,6 +1,9 @@
 import json
 import os
 
+import sys
+print(os.path.join(os.getcwd(), "lib"))
+sys.path.insert(0, os.path.join(os.getcwd(), "lib"))
 from lib.setup_elk_grafana import Instrumentize
 from lib.slice_builder import SetupSlice
 
@@ -18,8 +21,9 @@ def read_config(filename):
     return data
 
 
-set_environ("config/shik_config/project_config.json")
+set_environ("project_config.json")
 slice_config = read_config("config/slice_config.json")
-s = SetupSlice(slice_config)
-int = Instrumentize(slice_config["slice_name"])
-int.upload_grafana_dashboard()
+# s = SetupSlice(slice_config)
+# s.get_slice_ssh_commands()
+# s.configure_ips()
+# int = Instrumentize(slice_config["slice_name"])

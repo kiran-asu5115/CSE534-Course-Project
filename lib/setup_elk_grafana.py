@@ -1,19 +1,25 @@
 import os
-import sys
-
-print("setup_elk_grafana -", "System Path:", sys.path)
 
 from fabrictestbed_extensions.mflib.mflib import mflib
-from fabrictestbed_extensions.fablib.fablib import fablib
-from fabrictestbed_extensions.fablib.fablib import FablibManager as fablib_manager
+
+
+class Instrumentize:
+    def __init__(self, slice_name):
+        self.slice_name = slice_name
+        self.mf = mflib(self.slice_name)
+        instrumetize_results = self.mf.instrumentize()
+        self.elk = SetupELK(self.mf)
+        self.grafana = SetupGrafana(self.mf)
+        self.grafana.get_grafana_info()
+        self.elk.get_elk_info()
+        self.grafana.upload_grafana_dashboard()
+        self.elk.upload_elk_dashboard()
 
 
 class SetupELK:
-    def __init__(self, slice_name, elk_port=10020):
-        # The slice name of the slice with which you want to interact.
-        self.slice_name = slice_name
-        # self.mf.grafana_tunnel_local_port = elk_port
-
+    def __init__(self, mf, elk_port=10020):
+        self.mf = mf
+        self.mf.grafana_tunnel_local_port = elk_port
 
     def get_elk_info(self):
         # ELK SSH Tunnel Command
@@ -76,16 +82,14 @@ class SetupELK:
         for node in self.mf.slice.get_nodes():
             if node.get_name() != "_meas_node":
                 print("setup_elk_grafana -", f"{node.get_name()} ELK Metric Overview")
-                print("setup_elk_grafana -", 
-                    f"    http://localhost:10020/app/metrics/detail/host/{node.get_reservation_id()}-{node.get_name().lower()}")
+                print("setup_elk_grafana -",
+                      f"    http://localhost:10020/app/metrics/detail/host/{node.get_reservation_id()}-{node.get_name().lower()}")
 
 
 class SetupGrafana:
-    def __init__(self, slice_name, port=10010):
-        # The slice name of the slice with which you want to interact.
-        self.slice_name = slice_name
-        # self.mf.grafana_tunnel_local_port = port
-
+    def __init__(self, mf, port=10010):
+        self.mf = mf
+        self.mf.grafana_tunnel_local_port = port
 
     def get_grafana_info(self):
         # Grafana SSH Tunnel Command
@@ -108,16 +112,3 @@ class SetupGrafana:
         files = ["./dashboard_examples/grafana/up.json"]
         dashboard_results = self.mf.update("grafana_manager", data, files)
         print(dashboard_results)
-
-
-
-class Instrumentize(SetupGrafana, SetupELK):
-    def __init__(self, slice_name):
-        super().__init__(slice_name)
-        self.slice_name = slice_name
-        print("setup_elk_grafana -", "Setting up Measurement Framework Object")
-        self.mf = mflib(self.slice_name)
-        instrumetize_results = self.mf.instrumentize()
-        self.get_grafana_info()
-        self.get_elk_info()
-        print("setup_elk_grafana -", "Measurement Framework Object Setup Completed!")
