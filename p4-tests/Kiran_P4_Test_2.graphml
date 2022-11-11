@@ -1,0 +1,473 @@
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d13" for="edge" attr.name="Class" attr.type="string" />
+  <key id="d12" for="node" attr.name="Labels" attr.type="string" />
+  <key id="d11" for="node" attr.name="Layer" attr.type="string" />
+  <key id="d10" for="node" attr.name="Details" attr.type="string" />
+  <key id="d9" for="node" attr.name="Model" attr.type="string" />
+  <key id="d8" for="node" attr.name="ImageRef" attr.type="string" />
+  <key id="d7" for="node" attr.name="Capacities" attr.type="string" />
+  <key id="d6" for="node" attr.name="Site" attr.type="string" />
+  <key id="d5" for="node" attr.name="StitchNode" attr.type="string" />
+  <key id="d4" for="node" attr.name="Type" attr.type="string" />
+  <key id="d3" for="node" attr.name="Name" attr.type="string" />
+  <key id="d2" for="node" attr.name="NodeID" attr.type="string" />
+  <key id="d1" for="node" attr.name="Class" attr.type="string" />
+  <key id="d0" for="node" attr.name="GraphID" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="75">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkNode</data>
+      <data key="d2">bc01f613-bf74-4628-b088-d7e1b79ea1ad</data>
+      <data key="d3">h1</data>
+      <data key="d4">VM</data>
+      <data key="d5">false</data>
+      <data key="d6">TACC</data>
+      <data key="d7">{"core": 2, "disk": 20, "ram": 4}</data>
+      <data key="d8">default_ubuntu_20,qcow2</data>
+    </node>
+    <node id="76">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Component</data>
+      <data key="d2">353e3e01-799f-4ae9-8e89-c9b3d657209b</data>
+      <data key="d3">h1-host_nic_1</data>
+      <data key="d4">SharedNIC</data>
+      <data key="d9">ConnectX-6</data>
+      <data key="d10">Mellanox ConnectX-6 VPI MCX653 dual port 100Gbps</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="77">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">31754088-23cf-4736-9414-71a48eab9433</data>
+      <data key="d3">h1-h1-host_nic_1-l2ovs</data>
+      <data key="d4">OVS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="78">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">4f2b435f-3828-4006-bcf3-524c23aae5f6</data>
+      <data key="d3">h1-host_nic_1-p1</data>
+      <data key="d4">SharedPort</data>
+      <data key="d7">{"unit": 1}</data>
+      <data key="d12">{"local_name": "p1"}</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="79">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkNode</data>
+      <data key="d2">25dd136e-bff1-49d9-9e48-1380d294da86</data>
+      <data key="d3">s1</data>
+      <data key="d4">VM</data>
+      <data key="d5">false</data>
+      <data key="d6">TACC</data>
+      <data key="d7">{"core": 2, "disk": 100, "ram": 8}</data>
+      <data key="d8">default_ubuntu_20,qcow2</data>
+    </node>
+    <node id="80">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Component</data>
+      <data key="d2">c3fd36f6-9658-41c1-8f9a-e0b314a2c031</data>
+      <data key="d3">s1-switch_nic_1_local</data>
+      <data key="d4">SharedNIC</data>
+      <data key="d9">ConnectX-6</data>
+      <data key="d10">Mellanox ConnectX-6 VPI MCX653 dual port 100Gbps</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="81">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">8fd8a7a0-a369-4411-bf9c-4b1be8bee80a</data>
+      <data key="d3">s1-s1-switch_nic_1_local-l2ovs</data>
+      <data key="d4">OVS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="82">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">c664d8d7-11de-4e12-b37b-f76b353f8ee5</data>
+      <data key="d3">s1-switch_nic_1_local-p1</data>
+      <data key="d4">SharedPort</data>
+      <data key="d7">{"unit": 1}</data>
+      <data key="d12">{"local_name": "p1"}</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="83">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Component</data>
+      <data key="d2">3ddb4b84-5acf-4e7d-882d-c3936a700b05</data>
+      <data key="d3">s1-switch_nic_1_conn1</data>
+      <data key="d4">SharedNIC</data>
+      <data key="d9">ConnectX-6</data>
+      <data key="d10">Mellanox ConnectX-6 VPI MCX653 dual port 100Gbps</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="84">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">a4b29d47-8568-4452-a924-c21597078ba1</data>
+      <data key="d3">s1-s1-switch_nic_1_conn1-l2ovs</data>
+      <data key="d4">OVS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="85">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">45cef3bb-8860-491b-8877-9fabe3985ed6</data>
+      <data key="d3">s1-switch_nic_1_conn1-p1</data>
+      <data key="d4">SharedPort</data>
+      <data key="d7">{"unit": 1}</data>
+      <data key="d12">{"local_name": "p1"}</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="86">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Component</data>
+      <data key="d2">4658d4cd-649c-4262-8568-861b54804ee4</data>
+      <data key="d3">s1-switch_nic_1_conn2</data>
+      <data key="d4">SharedNIC</data>
+      <data key="d9">ConnectX-6</data>
+      <data key="d10">Mellanox ConnectX-6 VPI MCX653 dual port 100Gbps</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="87">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">4ecf90ab-67a7-45ab-b7e6-f413d2040f88</data>
+      <data key="d3">s1-s1-switch_nic_1_conn2-l2ovs</data>
+      <data key="d4">OVS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="88">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">7908ac69-b9a3-41e3-b714-5035b5344ea4</data>
+      <data key="d3">s1-switch_nic_1_conn2-p1</data>
+      <data key="d4">SharedPort</data>
+      <data key="d7">{"unit": 1}</data>
+      <data key="d12">{"local_name": "p1"}</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="89">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkNode</data>
+      <data key="d2">8148934d-9df1-4c2d-8392-409b81c0971e</data>
+      <data key="d3">h2</data>
+      <data key="d4">VM</data>
+      <data key="d5">false</data>
+      <data key="d6">SALT</data>
+      <data key="d7">{"core": 2, "disk": 20, "ram": 4}</data>
+      <data key="d8">default_ubuntu_20,qcow2</data>
+    </node>
+    <node id="90">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Component</data>
+      <data key="d2">ca46087f-cef7-4599-90c3-d552da60d841</data>
+      <data key="d3">h2-host_nic_2</data>
+      <data key="d4">SharedNIC</data>
+      <data key="d9">ConnectX-6</data>
+      <data key="d10">Mellanox ConnectX-6 VPI MCX653 dual port 100Gbps</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="91">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">87e7091a-cd68-407a-91be-28c29df9a6b5</data>
+      <data key="d3">h2-h2-host_nic_2-l2ovs</data>
+      <data key="d4">OVS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="92">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">e14c29e4-7d6d-4ea1-9123-c388d95a8382</data>
+      <data key="d3">h2-host_nic_2-p1</data>
+      <data key="d4">SharedPort</data>
+      <data key="d7">{"unit": 1}</data>
+      <data key="d12">{"local_name": "p1"}</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="93">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkNode</data>
+      <data key="d2">5c09f11b-15a7-43ea-bef1-77e17709cdfa</data>
+      <data key="d3">h3</data>
+      <data key="d4">VM</data>
+      <data key="d5">false</data>
+      <data key="d6">SALT</data>
+      <data key="d7">{"core": 2, "disk": 20, "ram": 4}</data>
+      <data key="d8">default_ubuntu_20,qcow2</data>
+    </node>
+    <node id="94">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Component</data>
+      <data key="d2">6cf92ac9-0e9d-4173-a746-62d646e55afe</data>
+      <data key="d3">h3-host_nic_3</data>
+      <data key="d4">SharedNIC</data>
+      <data key="d9">ConnectX-6</data>
+      <data key="d10">Mellanox ConnectX-6 VPI MCX653 dual port 100Gbps</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="95">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">97387d8a-365e-4fb1-aa79-e7597577a4a4</data>
+      <data key="d3">h3-h3-host_nic_3-l2ovs</data>
+      <data key="d4">OVS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="96">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">6fe94e19-5a57-4ed7-ac0c-e63da047a87d</data>
+      <data key="d3">h3-host_nic_3-p1</data>
+      <data key="d4">SharedPort</data>
+      <data key="d7">{"unit": 1}</data>
+      <data key="d12">{"local_name": "p1"}</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="97">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">c6713ad0-8515-4b80-b878-9ae29e3a4557</data>
+      <data key="d3">C1</data>
+      <data key="d4">L2Bridge</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="98">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">e1f530d5-62a7-4b3a-baaf-31e349267bc1</data>
+      <data key="d3">s1-s1-switch_nic_1_local-p1</data>
+      <data key="d4">ServicePort</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="99">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Link</data>
+      <data key="d2">071539f4-6a1f-4fc3-9acc-7ceea299dd20</data>
+      <data key="d3">s1-s1-switch_nic_1_local-p1-link</data>
+      <data key="d4">L2Path</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="100">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">1b499f25-0b6b-42e6-aa11-f8d2f1481164</data>
+      <data key="d3">h1-h1-host_nic_1-p1</data>
+      <data key="d4">ServicePort</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="101">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Link</data>
+      <data key="d2">769595b5-cb0a-4c0f-91c9-314c957b343a</data>
+      <data key="d3">h1-h1-host_nic_1-p1-link</data>
+      <data key="d4">L2Path</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="102">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">0896002e-818a-4b8f-982c-161ed6010717</data>
+      <data key="d3">C2</data>
+      <data key="d4">L2STS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="103">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">2e203426-a850-495e-a0eb-fd9f9689de93</data>
+      <data key="d3">s1-s1-switch_nic_1_conn1-p1</data>
+      <data key="d4">ServicePort</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="104">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Link</data>
+      <data key="d2">5102c745-607f-4191-9c04-36776301e8a9</data>
+      <data key="d3">s1-s1-switch_nic_1_conn1-p1-link</data>
+      <data key="d4">L2Path</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="105">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">5e3631e7-74f2-4979-bfe7-6ebfb7ff6dd1</data>
+      <data key="d3">h2-h2-host_nic_2-p1</data>
+      <data key="d4">ServicePort</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="106">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Link</data>
+      <data key="d2">60ee3d22-ca52-427a-9bf8-9155618f4b47</data>
+      <data key="d3">h2-h2-host_nic_2-p1-link</data>
+      <data key="d4">L2Path</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="107">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">NetworkService</data>
+      <data key="d2">02b74b62-1999-4bd8-9323-d4903e3bb77a</data>
+      <data key="d3">C3</data>
+      <data key="d4">L2STS</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="108">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">6963312d-9070-4a61-85a6-03357abffaf9</data>
+      <data key="d3">s1-s1-switch_nic_1_conn2-p1</data>
+      <data key="d4">ServicePort</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="109">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Link</data>
+      <data key="d2">fae3c93f-f950-4fc0-8736-01a95deb9057</data>
+      <data key="d3">s1-s1-switch_nic_1_conn2-p1-link</data>
+      <data key="d4">L2Path</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <node id="110">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">ConnectionPoint</data>
+      <data key="d2">41acff5f-d507-41fa-8373-73e57603c7e5</data>
+      <data key="d3">h3-h3-host_nic_3-p1</data>
+      <data key="d4">ServicePort</data>
+      <data key="d5">false</data>
+    </node>
+    <node id="111">
+      <data key="d0">0b9fba27-2a3e-4eaf-b33c-5932c7086845</data>
+      <data key="d1">Link</data>
+      <data key="d2">7a58fc34-46dd-40a0-a085-b4ecac39f75c</data>
+      <data key="d3">h3-h3-host_nic_3-p1-link</data>
+      <data key="d4">L2Path</data>
+      <data key="d5">false</data>
+      <data key="d11">L2</data>
+    </node>
+    <edge source="75" target="76">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="76" target="77">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="77" target="78">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="78" target="101">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="79" target="80">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="79" target="83">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="79" target="86">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="80" target="81">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="81" target="82">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="82" target="99">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="83" target="84">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="84" target="85">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="85" target="104">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="86" target="87">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="87" target="88">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="88" target="109">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="89" target="90">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="90" target="91">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="91" target="92">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="92" target="106">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="93" target="94">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="94" target="95">
+      <data key="d13">has</data>
+    </edge>
+    <edge source="95" target="96">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="96" target="111">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="97" target="98">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="97" target="100">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="98" target="99">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="100" target="101">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="102" target="103">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="102" target="105">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="103" target="104">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="105" target="106">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="107" target="108">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="107" target="110">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="108" target="109">
+      <data key="d13">connects</data>
+    </edge>
+    <edge source="110" target="111">
+      <data key="d13">connects</data>
+    </edge>
+  </graph>
+</graphml>

@@ -1,0 +1,4 @@
+Bastion Connection:
+ssh -i /home/fabric/work/.ssh/fabric_bastion -4 -C2T -D 14000 -M -N ksthanus_0000025693@bastion-1.fabric-testbed.net
+
+ssh -i /home/fabric/work/CSE534/CSE534-Course-Project/slice_config/slice_key -F /home/fabric/work/CSE534/CSE534-Course-Project/slice_config/shik_ssh_config sgupt330_0000024390@bastion-1.fabric-testbed.net ubuntu@2001:400:a100:3010:f816:3eff:fe6b:e12f

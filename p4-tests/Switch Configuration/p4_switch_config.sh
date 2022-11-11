@@ -25,6 +25,7 @@ make -j2 check
 sudo make install
 
 cd ..
+cd ..
 git clone https://github.com/p4lang/behavioral-model.git
 cd behavioral-model
 ./install_deps.sh
