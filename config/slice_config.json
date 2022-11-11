@@ -4,26 +4,66 @@
       "hostname": "Host_1",
       "site": "TACC",
       "ram": 4,
-      "disk": 20
+      "disk": 20,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_1"
+      ]
     },
     {
       "hostname": "Switch_1",
       "site": "TACC",
       "ram": 8,
-      "disk": 100
+      "disk": 100,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "switch_nic_1_conn_h1",
+        "switch_nic_1_conn_h2",
+        "switch_nic_1_conn_h3"
+      ]
     },
     {
       "hostname": "Host_2",
       "site": "TACC",
       "ram": 4,
-      "disk": 20
+      "disk": 20,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_2"
+      ]
     },
-
     {
       "hostname": "Host_3",
       "site": "TACC",
       "ram": 4,
-      "disk": 20
+      "disk": 20,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_3"
+      ]
+    }
+  ],
+  "conn_config": [
+    {
+      "name": "C1",
+      "interfaces": [
+        "switch_nic_1_conn_h1",
+        "host_nic_1"
+      ]
+    },
+    {
+      "name": "C2",
+      "interfaces": [
+        "switch_nic_1_conn_h2",
+        "host_nic_2"
+      ]
+    },
+    {
+      "name": "C3",
+      "interfaces": [
+        "switch_nic_1_conn_h3",
+        "host_nic_3"
+      ]
     }
   ]
 }

@@ -1,7 +1,10 @@
 import os
+<<<<<<< HEAD
 import sys
 
 print("setup_elk_grafana -", "System Path:", sys.path)
+=======
+>>>>>>> 84e34f6437fedf8a8cd7a1580bfbe7c683c575be
 
 from fabrictestbed_extensions.mflib.mflib import mflib
 from fabrictestbed_extensions.fablib.fablib import fablib
@@ -9,9 +12,15 @@ from fabrictestbed_extensions.fablib.fablib import FablibManager as fablib_manag
 
 
 class SetupELK:
+<<<<<<< HEAD
     def __init__(self, slice_name, elk_port=10020):
         # The slice name of the slice with which you want to interact.
         self.slice_name = slice_name
+=======
+    def __init__(self, slice_name=None, elk_port=10020):
+        # The slice name of the slice with which you want to interact.
+        self.slice_name = "Kiran_P4_Test_2"
+>>>>>>> 84e34f6437fedf8a8cd7a1580bfbe7c683c575be
         # self.mf.grafana_tunnel_local_port = elk_port
 
 
@@ -75,15 +84,26 @@ class SetupELK:
         # A few direct links to node data
         for node in self.mf.slice.get_nodes():
             if node.get_name() != "_meas_node":
+<<<<<<< HEAD
                 print("setup_elk_grafana -", f"{node.get_name()} ELK Metric Overview")
                 print("setup_elk_grafana -", 
+=======
+                print(f"{node.get_name()} ELK Metric Overview")
+                print(
+>>>>>>> 84e34f6437fedf8a8cd7a1580bfbe7c683c575be
                     f"    http://localhost:10020/app/metrics/detail/host/{node.get_reservation_id()}-{node.get_name().lower()}")
 
 
 class SetupGrafana:
+<<<<<<< HEAD
     def __init__(self, slice_name, port=10010):
         # The slice name of the slice with which you want to interact.
         self.slice_name = slice_name
+=======
+    def __init__(self, slice_name=None, port=10010):
+        # The slice name of the slice with which you want to interact.
+        self.slice_name = "Kiran_P4_Test_2"
+>>>>>>> 84e34f6437fedf8a8cd7a1580bfbe7c683c575be
         # self.mf.grafana_tunnel_local_port = port
 
 
@@ -112,6 +132,7 @@ class SetupGrafana:
 
 
 class Instrumentize(SetupGrafana, SetupELK):
+<<<<<<< HEAD
     def __init__(self, slice_name):
         super().__init__(slice_name)
         self.slice_name = slice_name
@@ -134,3 +155,22 @@ class MeasurementNode():
         print("setup_elk_grafana -", "Setting up Measurement Node")
         mflib.addMeasNode(slice)
         print("setup_elk_grafana -", "Setting up Measurement Node Setup Completed!")
+=======
+    def __init__(self):
+        super().__init__()
+        slice = fablib.get_slice(name=self.slice_name)
+        self.setup_meas_node(slice)
+        self.mf = mflib(self.slice_name)
+        instrumetize_results = self.mf.instrumentize()
+        self.get_grafana_info()
+        self.get_elf_info()
+        # self.slice = slice
+
+
+    def setup_meas_node(self, slice):
+        # Add measurement node to topology using static method.
+        mflib.addMeasNode(slice)
+        print("Done")
+
+c = Instrumentize()
+>>>>>>> 84e34f6437fedf8a8cd7a1580bfbe7c683c575be

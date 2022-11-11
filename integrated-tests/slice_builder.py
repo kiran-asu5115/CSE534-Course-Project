@@ -1,8 +1,4 @@
-import os
-import sys
 from fabrictestbed_extensions.fablib.fablib import FablibManager as fablib_manager
-from fablib_utils import slice_builder_utils, node_builder_utils, component_builder_utils, network_builder_utils
-from mflib_utils.setup_elk_grafana import Instrumentize, MeasurementNode
 
 
 def read_config(filename):
@@ -15,10 +11,6 @@ class SetupSlice:
         # fablib.show_config()
         self.slice_config = read_config(filename)
         slice_name = "Kiran_Integrated_Test_1"
-        integrated_slice = slice_builder_utils.create_slice(slice_name)
-        integrated_slice = slice_builder_utils.create_slice(slice_name)
-        self.default_image = 'default_ubuntu_20'
-        self.image_type = 'qcow2'
         print(f"Using slice {self.slice_name} at site {self.site}")
 
     def create_slice(self):
