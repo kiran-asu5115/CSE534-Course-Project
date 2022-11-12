@@ -199,7 +199,11 @@ class core():
                 errmsg += "FABRIC_ALT_COPY_SLICE_PRIVATE_KEY_FILE not found in fabric_rc file. "
             
         if errmsg:
-            return "It appears you have not added alternate ssh config or slice key file locations to the fabric_rc file. " + errmsg
+            ssh_config = os.environ["FABRIC_SSH_CONFIG"]
+            private_key_file = os.environ["FABRIC_SLICE_PRIVATE_KEY_FILE"]
+            # return "It appears you have not added alternate ssh config or slice key file locations to the fabric_rc file. " + errmsg
+            tunnel_cmd = f'ssh -L {local_port}:localhost:{remote_port} -F {ssh_config} -i {private_key_file} {slice_username}@{meas_node_ip}'
+            return tunnel_cmd 
         else:
             #return f'ssh -L 10010:localhost:443 -F {extra_fm_vars["FABRIC_ALT_SSH_CONFIG"]} -i {extra_fm_vars["FABRIC_ALT_SLICE_PRIVATE_KEY_FILE"]} {self.slice_username}@{self.meas_node_ip}'
             tunnel_cmd = f'ssh -L {local_port}:localhost:{remote_port} -F {ssh_config} -i {private_key_file} {slice_username}@{meas_node_ip}'
