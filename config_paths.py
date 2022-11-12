@@ -5,7 +5,7 @@ def get_lib_config_path():
     return lib_config_path
 
 def get_project_config_path():
-    project_config_path = os.path.join(os.getcwd(), "config", "kiran_config", "project_config.json")
+    project_config_path = os.path.join(os.getcwd(), "config", "shik_config", "project_config.json")
     return project_config_path
 
 def get_slice_config_path():

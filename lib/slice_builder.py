@@ -161,7 +161,7 @@ class SetupSlice:
         switch_node.upload_file(src_file_path, dst_file_name)
 
     def upload_p4_config_file(self, switch_node, src_file_name, dst_file_name):
-        p4_config_directory = "configurations"
+        p4_config_directory = "host_configurations"
         src_file_path = os.path.join(os.getcwd(), p4_config_directory, src_file_name)
         switch_node.upload_file(src_file_path, dst_file_name)
 
