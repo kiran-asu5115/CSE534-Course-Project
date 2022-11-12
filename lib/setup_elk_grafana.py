@@ -7,11 +7,12 @@ class Instrumentize:
     def __init__(self, slice_name):
         self.slice_name = slice_name
         self.mf = mflib(self.slice_name)
-        instrumetize_results = self.mf.instrumentize()
         self.elk = SetupELK(self.mf)
         self.grafana = SetupGrafana(self.mf)
-        self.grafana.get_grafana_info()
-        self.elk.get_elk_info()
+        if not (self.grafana.get_grafana_info() and self.elk.get_elk_info()):
+            instrumetize_results = self.mf.instrumentize()
+            self.grafana.get_grafana_info()
+            self.elk.get_elk_info()
         self.grafana.upload_grafana_dashboard()
         self.elk.upload_elk_dashboard()
 
@@ -36,6 +37,8 @@ class SetupELK:
 
         if info_results["success"]:
             print(f"user: {info_results['nginx_id']} \npass: {info_results['nginx_password']}")
+            return True
+        return False
 
     def upload_elk_dashboard(self):
         data = {"commands": []}
@@ -47,7 +50,7 @@ class SetupELK:
         data["commands"].append({"cmd": "add_dashboards", "dashboard_filenames": ["FABRICDashboards.ndjson"]})
 
         # Add list of files to upload to the Measurement Node.
-        files = ["./dashboard_examples/kibana/FABRICDashboards.ndjson"]
+        files = [os.path.join(os.getcwd(), "lib/dashboard_examples/kibana/FABRICDashboards.ndjson")]
 
         # Call update
         results = self.mf.update("elk", data, files)
@@ -55,7 +58,7 @@ class SetupELK:
 
         # Array to be filled with full paths of all dashboard files in dashboards_folder directory
         dashboard_filenames = []
-        dashboards_folder = "./dashboard_examples/kibana/"
+        dashboards_folder = os.path.join(os.getcwd(), "lib/dashboard_examples/kibana/")
 
         # Loop through dashboards folder
         for file in os.listdir(dashboards_folder):
@@ -102,13 +105,16 @@ class SetupGrafana:
         # Set the info you want to get.
         # Call info using service name and data dictionary.
         info_results = self.mf.info("grafana_manager", data)
-        print(info_results)
+        if info_results["success"]:
+            print(info_results)
+            return True
+        return False
 
     def upload_grafana_dashboard(self):
         data = {"commands": []}
         data["commands"].append({"cmd": "upload_dashboards", "dashboard_filenames": ["up.json"]})
         data["commands"].append({"cmd": "add_dashboards", "dashboard_filenames": ["up.json"]})
 
-        files = ["./dashboard_examples/grafana/up.json"]
+        files = [os.path.join(os.getcwd(), "lib/dashboard_examples/grafana/up.json")]
         dashboard_results = self.mf.update("grafana_manager", data, files)
         print(dashboard_results)

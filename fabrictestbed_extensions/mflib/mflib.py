@@ -185,6 +185,8 @@ class core():
         private_key_file = ""
     
         extra_fm_vars = extra_fm.read_fabric_rc(extra_fm.default_fabric_rc)
+        ssh_config = os.environ["FABRIC_SSH_CONFIG"]
+        private_key_file = os.environ["FABRIC_SLICE_PRIVATE_KEY_FILE"]
         if extra_fm_vars:
             if "FABRIC_ALT_COPY_SSH_CONFIG" in extra_fm_vars:
                 ssh_config = extra_fm_vars["FABRIC_ALT_COPY_SSH_CONFIG"]
