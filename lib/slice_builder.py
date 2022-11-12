@@ -90,7 +90,9 @@ class SetupSlice:
         slice = self.get_slice_by_name_or_id(slice_id)
         nodes = slice.get_nodes()
         node_hostnames, node_ssh_commands = [], []
-        ssh_command_prefix = "ssh -i config/shik_config/slice_key -F config/shik_config/ssh_config "
+        ssh_config = os.environ["FABRIC_SSH_CONFIG"]
+        private_key_file = os.environ["FABRIC_SLICE_PRIVATE_KEY_FILE"]
+        ssh_command_prefix = "ssh -i " + private_key_file + " -F " + ssh_config + " "
         for node in nodes:
             try:
                 node_username, node_management_ip = str(node.get_username()), str(node.get_management_ip())

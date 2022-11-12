@@ -75,8 +75,12 @@ class ApiClient(object):
         self.user_agent = 'Swagger-Codegen/1.0.0/python'
 
     def __del__(self):
-        self.pool.close()
-        self.pool.join()
+        try:
+            self.pool.close()
+            self.pool.join()
+        except Exception as e:
+            print("fabric_cf - credmgr - swagger_client - api_client.py - Exception in Closing Pool")
+        
 
     @property
     def user_agent(self):
