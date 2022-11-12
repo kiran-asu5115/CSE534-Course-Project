@@ -18,45 +18,47 @@ class SetupSlice:
 
     # Create Slice
     def create_slice(self):
-        try:
-            nic_comp = {}
-            for node in self.slice_config["host_config"]:
-                node_params = {
-                    "site": self.site,
-                    "ram": node["ram"],
-                    "disk": node["disk"],
-                    "cores": node["cores"],
-                    "image": node["image"]
-                }
-                node_comp = node_builder_utils.add_new_node(self.integrated_slice, node["hostname"], node_params)
-                for nic in node["host_nic"]:
-                    node_nic = component_builder_utils.add_new_component(node_comp, comp_name=nic)
-                    nic_comp[nic] = node_nic
+        slice = slice_builder_utils.get_slice_by_name_or_id(self.slice_name)
+        if not slice:
+            try:
+                nic_comp = {}
+                for node in self.slice_config["host_config"]:
+                    node_params = {
+                        "site": self.site,
+                        "ram": node["ram"],
+                        "disk": node["disk"],
+                        "cores": node["cores"],
+                        "image": node["image"]
+                    }
+                    node_comp = node_builder_utils.add_new_node(self.integrated_slice, node["hostname"], node_params)
+                    for nic in node["host_nic"]:
+                        node_nic = component_builder_utils.add_new_component(node_comp, comp_name=nic)
+                        nic_comp[nic] = node_nic
 
-            for conn in self.slice_config["conn_config"]:
-                conn_int = []
-                for interface in conn["interfaces"]:
-                    conn_comp = component_builder_utils.get_interface_of_component(nic_comp[interface],
-                                                                                   interface_number=1)
-                    conn_int.append(conn_comp)
-                network_builder_utils.add_new_network_connection(self.integrated_slice, conn["name"],
-                                                                 conn_interfaces=conn_int)
+                for conn in self.slice_config["conn_config"]:
+                    conn_int = []
+                    for interface in conn["interfaces"]:
+                        conn_comp = component_builder_utils.get_interface_of_component(nic_comp[interface],
+                                                                                       interface_number=1)
+                        conn_int.append(conn_comp)
+                    network_builder_utils.add_new_network_connection(self.integrated_slice, conn["name"],
+                                                                     conn_interfaces=conn_int)
 
-            print("Slice setup done.")
+                print("Slice setup done.")
 
-            # Adding Measuring Node
-            self.setup_meas_node()
+                # Adding Measuring Node
+                self.setup_meas_node()
 
-            # Submit Slice Request
-            slice_builder_utils.submit_slice(self.integrated_slice)
-            print("Slice creation done.")
+                # Submit Slice Request
+                slice_builder_utils.submit_slice(self.integrated_slice)
+                print("Slice creation done.")
 
-            days = 14
-            slice_builder_utils.extend_slice_lease(self.slice_name, days)
+                days = 14
+                slice_builder_utils.extend_slice_lease(self.slice_name, days)
 
-        except Exception as e:
-            print(f"Slice Fail: {e}")
-            traceback.print_exc()
+            except Exception as e:
+                print(f"Slice Fail: {e}")
+                traceback.print_exc()
 
     def setup_meas_node(self):
         # Add measurement node to topology using static method.
