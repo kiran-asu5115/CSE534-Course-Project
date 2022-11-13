@@ -122,6 +122,15 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 
     \section{Initial Results}
+    We were able to use the fablib api to create the slice, deploy the switch, configure it, compile the P4 program and use the MFLib api to create the monitoring node to collect the metric. Figure 5 shows our initial topology created on FABRIC.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.1]{P4DynamicRouting.png}
+        \caption{Topology in FABRIC}
+        \label{fig}
+    \end{figure}
+
     Our preliminary goal is to toggle the routes between hosts dynamically and try sending ICMP packets between subnets. Once the P4 program is complied we can achieve our goal by adding/removing the routes in the table in the switch. Figure 6. shows the network packets forwarded before and after toggeling the route between the hosts.
 
 
