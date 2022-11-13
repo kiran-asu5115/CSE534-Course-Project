@@ -47,10 +47,14 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
     This project will create a dynamic routing experiment using BmV2 P4 Switches on the FABRIC Testbed. The FABRIC Testbed is a programmable research infrastructure that can be used for large-scale research. The resources of the infrastructure are used in the form of a slice.
 
     Network Monitoring technique is an important aspect of modern computer networks. These techniques give visibility into the network, enable better resource usage, and provide the ability to identify potential security threats on time. Active and passive network monitoring techniques have been used significantly to monitor networks. As a deep dive into network monitoring, the project will demonstrate the use of the FABRIC Measurement Framework Library (MFLib) \cite{b3}, to collect critical slice information by automatically adding monitoring software and services to the slice infrastructure.
+    Mininet is also a great way to develop, share, and experiment with Software-Defined Networking (SDN) systems using OpenFlow and P4. It's a network emulator which creates a network of virtual hosts, switches, controllers, and links. Mininet hosts run standard Linux network software.
+    Scapy is a Python program that enables the user to send, sniff and dissect and forge network packets. This capability allows construction of tools that can probe, scan or attack networks.
+    In other words, scapy is a powerful interactive packet manipulation program. It is able to forge or decode packets of a wide number of protocols, send them on the wire, capture them, match requests and replies, and much more.
+
 
 
     \section{Problem Statement}
-    This project will set up a routing experiment with a programmable switch Topology dynamically configured using P4. Using P4 we will modify routing tables on the switches in real time, which will form the basis for examining the packet flow between two hosts connected via multiple routing paths. The entire topology will be deployed as a slice on the FABRIC testbed infrastructure, and slice-level metrics will be collected, curated, and presented using the FABRIC Measurements Framework Library. \\
+    This project will set up a routing experiment with a programmable switch Topology dynamically configured using P4. Using P4 we will modify routing tables on the switches in real time, which will form the basis for examining the packet flow between two hosts connected via multiple routing paths. The entire topology will be first deployed using virtual machines, virtual network interfaces(Mininet) and scapy will be used to generate traffic. Our initial work with mininet and scapy will help build our algorithm to dynamically shift routes between hosts and will be further used for our experiment  where our infrastructure will be deployed as a slice on the FABRIC testbed infrastructure, and slice-level metrics will be collected, curated, and presented using the FABRIC measurements framework library which will be used for our algorithm.\\
 
 
     \section{Methodology}
