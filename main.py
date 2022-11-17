@@ -25,10 +25,15 @@ def read_config(filename):
         data = json.load(fp)
     return data
 
-slice_config_path = get_slice_config_path()
+
+slice_config_file_name = "final_topo_slice_config.json"
+slice_config_path = get_slice_config_path(file_name=slice_config_file_name)
 slice_config = read_config(slice_config_path)
+print(slice_config)
 s = SetupSlice(slice_config)
 # s.create_slice()
-s.get_slice_ssh_commands()
+# s.get_slice_ssh_commands()
 # s.configure_ips()
-int = Instrumentize(slice_config["slice_name"])
+s.add_config_files_to_slice_nodes()
+
+inst_slice = Instrumentize(slice_config["slice_name"])

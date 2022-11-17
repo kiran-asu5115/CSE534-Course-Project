@@ -1,1 +1,1 @@
-sudo apt install net-tools screen scapy -y
+sudo apt install net-tools screen scapy

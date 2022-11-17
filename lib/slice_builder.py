@@ -59,6 +59,17 @@ class SetupSlice:
             except Exception as e:
                 print(f"Slice Fail: {e}")
                 traceback.print_exc()
+    
+    
+    def add_config_files_to_slice_nodes(self):
+        slice = self.get_slice_by_name_or_id()
+        nodes = slice.get_nodes()
+        for node in nodes:
+            node_name = node.get_name()
+            self.setup_node(node_name)
+            self.setup_switch(node_name)
+            print("Added Configuration Files to Node:", node_name)
+    
 
     def setup_meas_node(self):
         # Add measurement node to topology using static method.
@@ -159,13 +170,22 @@ class SetupSlice:
 
     def upload_p4_program_file(self, switch_node, src_file_name, dst_file_name):
         p4_programs_directory = "p4_programs"
-        src_file_path = os.path.join(os.getcwd(), p4_programs_directory, src_file_name)
-        switch_node.upload_file(src_file_path, dst_file_name)
+        try:
+            src_file_path = os.path.join(os.getcwd(), "lib", p4_programs_directory, src_file_name)
+            switch_node.upload_file(src_file_path, dst_file_name)
+        except Exception as e:
+            src_file_path = os.path.join(os.getcwd(), p4_programs_directory, src_file_name)
+            switch_node.upload_file(src_file_path, dst_file_name)
+            
 
-    def upload_p4_config_file(self, switch_node, src_file_name, dst_file_name):
+    def upload_config_file(self, switch_node, src_file_name, dst_file_name):
         p4_config_directory = "host_configurations"
-        src_file_path = os.path.join(os.getcwd(), p4_config_directory, src_file_name)
-        switch_node.upload_file(src_file_path, dst_file_name)
+        try:
+            src_file_path = os.path.join(os.getcwd(), "lib", p4_config_directory, src_file_name)
+            switch_node.upload_file(src_file_path, dst_file_name)
+        except Exception as e:
+            src_file_path = os.path.join(os.getcwd(), p4_config_directory, src_file_name)
+            switch_node.upload_file(src_file_path, dst_file_name)
 
     def get_node_by_name(self, slice, node_name):
         nodes = slice.get_nodes()
@@ -175,14 +195,19 @@ class SetupSlice:
 
         return switch_node
 
-    def setup_switch(self):
+    def setup_switch(self, switch_node_name="s1"):
         p4_slice = self.get_slice_by_name_or_id()
-
-        switch_node_name = "s1"
         switch_node = self.get_node_by_name(p4_slice, node_name=switch_node_name)
-
-        prog_file_name = "p4_basic_routing_1.p4"
+        
+        prog_file_name = "p4_basic_routing_2.p4"
+        self.upload_p4_program_file(switch_node, prog_file_name, prog_file_name)
+        
         config_file_name = "p4_switch_config.sh"
-
-        # upload_p4_program_file(switch_node, prog_file_name, prog_file_name)
-        self.upload_p4_config_file(switch_node, config_file_name, config_file_name)
+        self.upload_config_file(switch_node, config_file_name, config_file_name)
+    
+    def setup_node(self, node_name="s1"):
+        p4_slice = self.get_slice_by_name_or_id()
+        node = self.get_node_by_name(p4_slice, node_name=node_name)
+        
+        config_file_name = "general_node_config.sh"
+        self.upload_config_file(node, config_file_name, config_file_name)

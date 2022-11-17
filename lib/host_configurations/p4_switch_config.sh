@@ -1,4 +1,4 @@
-sudo apt-get update -y
+sudo apt-get update
 
 git clone --recursive https://github.com/p4lang/p4c.git
 
