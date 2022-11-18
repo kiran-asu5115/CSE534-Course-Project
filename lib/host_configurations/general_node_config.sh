@@ -1,1 +1,2 @@
-sudo apt install net-tools screen scapy
+sudo apt update
+sudo apt install net-tools screen
