@@ -28,3 +28,5 @@ SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/
 
 ssh -L 10010:localhost:443 -F config/kiran_config/ssh_config -i config/kiran_config/slice_key ubuntu@129.114.110.95
 ssh -L 10020:localhost:80 -F config/kiran_config/ssh_config -i config/kiran_config/slice_key ubuntu@129.114.110.95
+user: fabric 
+pass: OQzXZRQ7FiQ5ESCXnjPa
