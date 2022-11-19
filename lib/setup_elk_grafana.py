@@ -9,10 +9,20 @@ class Instrumentize:
         self.mf = mflib(self.slice_name)
         self.elk = SetupELK(self.mf)
         self.grafana = SetupGrafana(self.mf)
-      
-        instrumetize_results = self.mf.instrumentize()
-        self.grafana.get_grafana_info()
-        self.elk.get_elk_info()
+        
+        try:
+            if not (self.grafana.get_grafana_info() and self.elk.get_elk_info()):
+                instrumetize_results = self.mf.instrumentize()
+                self.grafana.get_grafana_info()
+                self.elk.get_elk_info()
+            else:
+                pass
+        except Exception as e:
+            print("Exception in getting Grafana and ELK Info", e) 
+            instrumetize_results = self.mf.instrumentize()
+            self.grafana.get_grafana_info()
+            self.elk.get_elk_info()
+
         self.grafana.upload_grafana_dashboard()
         self.elk.upload_elk_dashboard()
 
