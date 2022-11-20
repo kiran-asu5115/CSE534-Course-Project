@@ -4,6 +4,7 @@
   "host_config": [
     {
       "hostname": "Host_1",
+      "type": "host",
       "ram": 4,
       "disk": 20,
       "cores": 2,
@@ -14,6 +15,7 @@
     },
     {
       "hostname": "Switch_1",
+      "type": "switch",
       "ram": 8,
       "disk": 100,
       "cores": 2,
@@ -27,6 +29,7 @@
     {
       "hostname": "Host_2",
       "ram": 4,
+      "type": "host",
       "disk": 20,
       "cores": 2,
       "image": "default_ubuntu_20",
@@ -37,6 +40,7 @@
     {
       "hostname": "Host_3",
       "ram": 4,
+      "type": "host",
       "disk": 20,
       "cores": 2,
       "image": "default_ubuntu_20",
