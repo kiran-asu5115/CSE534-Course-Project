@@ -1,10 +1,22 @@
 from scapy.all import *
 from scapy.layers.inet import IP, TCP, UDP, ICMP
 import socket
+from flask import Flask, jsonify
 
+app = Flask(__name__)
+
+@app.route("/send_traffic", methods=["POST"])
+def update_content():
+
+    return jsonify({'packets_sent': ""})
+@app.route("/send_junk_traffic", methods=["POST"])
+def update_content():
+
+    return jsonify({'packets_sent': ""})
 
 class NetworkGen:
-    def __init__(self):
+    def __init__(self, client_port=5081, server_port=5080):
+        self.server_port = server_port
         pass
 
     def gen_tcp_packet(self, dest, count=2000, iface="ens8"):
@@ -79,6 +91,10 @@ class NetworkGen:
 
         # disconnect the client
         s.close()
+    def start_server(self):
+
+        app.config['SECRET_KEY'] = 'secret_101$'
+        app.run(host="0.0.0.0", port=self.server_port, debug=True)
 
 
 n = NetworkGen()
