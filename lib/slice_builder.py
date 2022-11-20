@@ -7,7 +7,7 @@ from ipaddress import IPv4Network
 from fablib_utils import slice_builder_utils, node_builder_utils, component_builder_utils, network_builder_utils
 
 
-class SetupSlice:
+class MeasurementSlice:
     def __init__(self, config):
         self.fablib = FablibManager()
         self.slice_config = config
@@ -15,6 +15,7 @@ class SetupSlice:
         self.site = self.slice_config['site']
         print(f"Using slice {self.slice_name} at site {self.site}")
         self.integrated_slice = slice_builder_utils.create_slice(self.slice_name)
+        
 
     # Create Slice
     def create_slice(self):
@@ -116,11 +117,11 @@ class SetupSlice:
                 print("Exception in Parsing Node Details:", node, e)
 
     def get_slice_components(self, slice_id=None):
-        slice = self.get_slice_by_name_or_id(slice_id)
-        nodes = slice.get_nodes()
+        nodes = self.integrated_slice.get_nodes()
         for node in nodes:
             components = node.get_components()
-            print(vars(components[0]))
+            # print(vars(components[0]))
+        return 
 
     def get_slice_interfaces(self, slice_id=None):
         slice = self.get_slice_by_name_or_id(slice_id)
@@ -145,28 +146,25 @@ class SetupSlice:
         print("Deleted IP Address:", ip_address, "for Node:", node.get_name())
 
     def configure_ips(self):
-
-        slice = self.get_slice_by_name_or_id(slice_id=None)
-        nodes = slice.get_nodes()
-        h1, s1, h2, h3, _ = nodes
-
-        net1 = "C1"
-        address_list = "192.168.1.0/24"
-        subnet, available_ips = self.configure_ipv4_subnet(address_list=address_list)
-        s1_i1_address = self.configure_node_interface(s1, net1, subnet, available_ips)
-        h1_address = self.configure_node_interface(h1, net1, subnet, available_ips)
-
-        net2 = "C2"
-        address_list = "192.168.2.0/24"
-        subnet, available_ips = self.configure_ipv4_subnet(address_list=address_list)
-        s1_i2_address = self.configure_node_interface(s1, net2, subnet, available_ips)
-        h2_address = self.configure_node_interface(h2, net2, subnet, available_ips)
-
-        net3 = "C3"
-        address_list = "192.168.3.0/24"
-        subnet, available_ips = self.configure_ipv4_subnet(address_list=address_list)
-        s1_i3_address = self.configure_node_interface(s1, net3, subnet, available_ips)
-        h3_address = self.configure_node_interface(h3, net3, subnet, available_ips)
+        print("Configuring IPs for Networks in Slice")
+        slice_components = self.get_slice_components()
+        for conn in self.slice_config["conn_config"]:
+            conn_name, conn_address_list = conn["name"], conn["address_list"]
+            conn_hosts = []
+            for conn_interface in conn["interfaces"]:
+                for component in slice_components:
+                    if component.get_name().endswith(conn_interface):
+                        conn_hosts.append(component.get_node())
+                        break
+                    else:
+                        pass
+            if len(conn_hosts) == len(conn["interfaces"]):
+                subnet, available_ips = self.configure_ipv4_subnet(address_list=conn_address_list)
+                for conn_host in conn_hosts:
+                    self.configure_node_interface(conn_host, conn_name, subnet, available_ips)
+                print("Successfully Configured IP Addresses for:", conn)
+            else:
+                print("Adequate no. of Hosts not found for Connection:", conn, "needed", len(conn["interfaces"]), "got", len(conn_hosts))
 
     def upload_p4_program_file(self, switch_node, src_file_name, dst_file_name):
         p4_programs_directory = "p4_programs"

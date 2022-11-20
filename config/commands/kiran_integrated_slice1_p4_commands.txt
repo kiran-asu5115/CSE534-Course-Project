@@ -1,0 +1,27 @@
+H1
+inet 192.168.1.2
+ether 32:a2:e4:8e:94:ea
+
+H2 - ens8
+inet 192.168.2.2
+ether 3e:e2:9e:42:44:39
+
+
+S1:
+H1 - ens10: 3a:8a:c8:9f:8d:57
+H2 - ens7: 32:d1:aa:31:ad:08
+
+Terminal 1:
+sudo simple_switch --interface 0@ens10 --interface 1@ens7 --interface 2@ens8 --thrift-port 9030  p4_basic_routing_2.json
+
+Terminal 2:
+                        switch_mac
+simple_switch_CLI --thrift-port 9030
+table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.2.0/24 => 32:d1:aa:31:ad:08 1 
+table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.1.0/24 => 3a:8a:c8:9f:8d:57 0
+
+OR
+rec_mac
+simple_switch_CLI --thrift-port 9030
+table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.2.0/24 => 3e:e2:9e:42:44:39 1 
+table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.1.0/24 => 32:a2:e4:8e:94:ea 0
