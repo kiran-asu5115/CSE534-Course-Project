@@ -26,6 +26,7 @@ from __future__ import annotations
 from fabrictestbed.slice_editor import Flags
 from tabulate import tabulate
 from ipaddress import IPv4Address
+import json
 
 from typing import TYPE_CHECKING, Any
 
@@ -395,3 +396,29 @@ class Interface:
 
         #print(f"hasattr(self, 'network'): {hasattr(self, 'network')}, None")
         return None
+    
+    # fablib.Interface.get_ip_addr()
+    def get_ip_addr(self):
+        """
+        Gets the ip addr info for this interface.
+        :return ip addr info
+        :rtype: str
+        """
+        try:
+            stdout, stderr = self.get_node().execute('ip -j addr list')
+
+            addrs = json.loads(stdout)
+
+            dev = self.get_os_interface()
+            #print(f"dev: {dev}")            
+
+            if dev == None:
+                return addrs
+
+            for addr in addrs:
+                if addr['ifname'] == dev:
+                    return addr['addr_info'][0]['local']
+
+            return None    
+        except Exception as e:
+            print(f"Exception: {e}")

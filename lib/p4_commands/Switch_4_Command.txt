@@ -1,0 +1,1 @@
+table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.1.0/24 => 6A:15:96:5C:B2:AF 2

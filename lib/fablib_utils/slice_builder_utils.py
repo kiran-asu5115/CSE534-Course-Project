@@ -60,3 +60,11 @@ def extend_slice_lease(slice_name, days):
         print("slice_builder_utils -", "New Lease End Date for Slice:", slice_name, "is", end_date)
     except Exception as e:
         print("slice_builder_utils -", "Error in Renewing Slice Lease for Slice:", slice_name, "error:", e)
+
+        
+def get_slice_interfaces(slice):
+    nodes = slice.get_nodes()
+    interfaces = []
+    for node in nodes:
+        interfaces += node.get_interfaces()
+    return interfaces

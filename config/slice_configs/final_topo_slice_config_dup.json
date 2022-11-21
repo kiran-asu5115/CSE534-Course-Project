@@ -1,0 +1,160 @@
+{
+  "slice_name": "Final_Integrated_Topology_3",
+  "site": "TACC",
+  "host_config": [
+    {
+      "hostname": "Host_1",
+      "ram": 4,
+      "disk": 20,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_1"
+      ]
+    },
+    {
+      "hostname": "Host_2",
+      "ram": 4,
+      "disk": 20,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_2"
+      ]
+    },
+    {
+      "hostname": "Host_3",
+      "ram": 4,
+      "disk": 20,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_3"
+      ]
+    },
+    {
+      "hostname": "Host_4",
+      "ram": 4,
+      "disk": 20,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "host_nic_4"
+      ]
+    },
+    {
+      "hostname": "Switch_1",
+      "ram": 8,
+      "disk": 100,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "switch_nic_1_conn_h1",
+        "switch_nic_1_conn_s2",
+        "switch_nic_1_conn_s3"
+      ]
+    },
+    {
+      "hostname": "Switch_2",
+      "ram": 8,
+      "disk": 100,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "switch_nic_2_conn_s1",
+        "switch_nic_2_conn_h2",
+        "switch_nic_2_conn_s4"
+      ]
+    },
+    {
+      "hostname": "Switch_3",
+      "ram": 8,
+      "disk": 100,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "switch_nic_3_conn_s1",
+        "switch_nic_3_conn_h3",
+        "switch_nic_3_conn_s4"
+      ]
+    },
+    {
+      "hostname": "Switch_4",
+      "ram": 8,
+      "disk": 100,
+      "cores": 2,
+      "image": "default_ubuntu_20",
+      "host_nic": [
+        "switch_nic_4_conn_s2",
+        "switch_nic_4_conn_s3",
+        "switch_nic_4_conn_h4"
+      ]
+    }
+  ],
+  "conn_config": [
+    {
+      "name": "HS1",
+      "address_list": "192.168.1.0/24",
+      "interfaces": [
+        "switch_nic_1_conn_h1",
+        "host_nic_1"
+      ]
+    },
+    {
+      "name": "HS2",
+      "address_list": "192.168.2.0/24",
+      "interfaces": [
+        "switch_nic_2_conn_h2",
+        "host_nic_2"
+      ]
+    },
+    {
+      "name": "HS3",
+      "address_list": "192.168.3.0/24",
+      "interfaces": [
+        "switch_nic_3_conn_h3",
+        "host_nic_3"
+      ]
+    },
+    {
+      "name": "HS4",
+      "address_list": "192.168.4.0/24",
+      "interfaces": [
+        "switch_nic_4_conn_h4",
+        "host_nic_4"
+      ]
+    },
+          {
+      "name": "SS12",
+      "address_list": "192.170.1.0/24",
+      "interfaces": [
+        "switch_nic_1_conn_s2",
+        "switch_nic_2_conn_s1"
+      ]
+    },
+    {
+      "name": "SS13",
+      "address_list": "192.170.2.0/24",
+      "interfaces": [
+        "switch_nic_1_conn_s3",
+        "switch_nic_3_conn_s1"
+      ]
+    },
+    {
+      "name": "SS24",
+      "address_list": "192.170.3.0/24",
+      "interfaces": [
+        "switch_nic_2_conn_s4",
+        "switch_nic_4_conn_s2"
+      ]
+    },
+    {
+      "name": "SS34",
+      "address_list": "192.170.4.0/24",
+      "interfaces": [
+        "switch_nic_3_conn_s4",
+        "switch_nic_4_conn_s3"
+      ]
+    }
+  ]
+}
