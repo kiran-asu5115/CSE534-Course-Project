@@ -6,7 +6,7 @@ Host bastion-?.fabric-testbed.net
      User ksthanus_0000025693
      ForwardAgent yes
      Hostname %h
-     IdentityFile fabric_bastion
+     IdentityFile config/kiran_config/fabric_bastion
      IdentitiesOnly yes
 
 Host * !bastion-?.fabric-testbed.net

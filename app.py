@@ -1,9 +1,13 @@
+import json
 import random
 import requests
 
 from flask import Flask, jsonify, request, render_template, flash, redirect, url_for
 
+from lib.get_data import GetMetrics
+
 app = Flask(__name__)
+g_m = GetMetrics()
 
 
 def html_escape(text):
@@ -66,6 +70,14 @@ def sniff():
         flash(message=html_escape(res.json()["packets"]), category="success")
 
     return redirect(url_for('home'))
+
+
+@app.route('/get_metric', methods=["POST", "GET"])
+def get_metrics():
+    metric_name = request.form.get('metric_name')
+    params = request.form.get('params')
+    agg = None
+    return json.dumps({'success': True, "metric_value": g_m.get_metric(metric_name, params, agg)}), 200, {'ContentType': 'application/json'}
 
 
 if __name__ == '__main__':

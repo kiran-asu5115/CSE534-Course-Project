@@ -14,8 +14,8 @@ class GetMetrics:
         warnings.simplefilter('ignore', InsecureRequestWarning)
         self.exporter_password = None
         self.exporter_username = None
-        self.username = "lFmDBAmd"
-        self.password = "sGhRZZEl"
+        self.username = None
+        self.password = None
         if not self.get_credentials():
             raise Exception("Credentials not found")
         self.headers = self.create_auth_headers()
@@ -62,29 +62,28 @@ class GetMetrics:
         else:
             output = self.prom.get_metric_range_data(metric, label_config=label, start_time=start_time,
                                                      end_time=end_time)
-        return int(output[0]["values"][1][1]) - int(output[0]["values"][0][1])
+        return output[0]
 
-
-g = GetMetrics()
-print(g.get_metric("node_netstat_Icmp_InMsgs", {"instance": "Switch_1", "job": "node"}))
-
-# Packet drops
-print(g.get_metric("node_network_receive_drop_total", {"instance": "Host_1", "job": "node"}))
-
-# Overall Speed
-print(g.get_metric("node_network_speed_bytes", {"instance": "Host_1", "job": "node"}))
-
-# ICMP traffic
-print(g.get_metric("node_netstat_Icmp_InMsgs", {"instance": "Host_1", "job": "node"}))
-print(g.get_metric("node_netstat_Icmp_OutMsgs", {"instance": "Host_1", "job": "node"}))
-print(g.get_metric("node_netstat_Icmp_InErrors", {"instance": "Host_1", "job": "node"}))
-
-# UDP traffic
-print(g.get_metric("node_netstat_Udp_InDatagrams", {"instance": "Host_1", "job": "node"}))
-print(g.get_metric("node_netstat_Udp_OutDatagrams", {"instance": "Host_1", "job": "node"}))
-print(g.get_metric("node_netstat_Udp_InErrors", {"instance": "Host_1", "job": "node"}))
-
-# TCP traffic
-print(g.get_metric("node_netstat_Tcp_InSegs", {"instance": "Host_1", "job": "node"}))
-print(g.get_metric("node_netstat_Tcp_OutSegs", {"instance": "Host_1", "job": "node"}))
-print(g.get_metric("node_netstat_Tcp_InErrs", {"instance": "Host_1", "job": "node"}))
+# g = GetMetrics()
+# print(g.get_metric("node_netstat_Icmp_InMsgs", {"instance": "Switch_1", "job": "node"}))
+#
+# # Packet drops
+# print(g.get_metric("node_network_receive_drop_total", {"instance": "Host_1", "job": "node"}))
+#
+# # Overall Speed
+# print(g.get_metric("node_network_speed_bytes", {"instance": "Host_1", "job": "node"}))
+#
+# # ICMP traffic
+# print(g.get_metric("node_netstat_Icmp_InMsgs", {"instance": "Host_1", "job": "node"}))
+# print(g.get_metric("node_netstat_Icmp_OutMsgs", {"instance": "Host_1", "job": "node"}))
+# print(g.get_metric("node_netstat_Icmp_InErrors", {"instance": "Host_1", "job": "node"}))
+#
+# # UDP traffic
+# print(g.get_metric("node_netstat_Udp_InDatagrams", {"instance": "Host_1", "job": "node"}))
+# print(g.get_metric("node_netstat_Udp_OutDatagrams", {"instance": "Host_1", "job": "node"}))
+# print(g.get_metric("node_netstat_Udp_InErrors", {"instance": "Host_1", "job": "node"}))
+#
+# # TCP traffic
+# print(g.get_metric("node_netstat_Tcp_InSegs", {"instance": "Host_1", "job": "node"}))
+# print(g.get_metric("node_netstat_Tcp_OutSegs", {"instance": "Host_1", "job": "node"}))
+# print(g.get_metric("node_netstat_Tcp_InErrs", {"instance": "Host_1", "job": "node"}))
