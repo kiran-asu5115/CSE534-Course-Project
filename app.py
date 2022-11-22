@@ -28,14 +28,20 @@ def home():
 
 @app.route('/send_traffic', methods=["POST", "GET"])
 def send_traffic():
+    ip_map = {
+        "192.168.1.2": "10.0.0.1",
+        "192.168.2.2": "10.0.0.2",
+        "192.168.3.2": "10.0.0.3",
+        "192.168.4.2": "10.0.0.4"
+    }
     packet_type = request.form.get('packet_type')
     source = request.form.get('source_addr')
     dest = request.form.get('destination_addr')
     count = request.form.get('count')
-    res = requests.post("http://%s:5080/send_traffic" % source, data={"packet_type": packet_type,
-                                                                      "dest": dest,
-                                                                      "source": source,
-                                                                      "count": count})
+    res = requests.post("http://%s:5080/send_traffic" % ip_map[source], data={"packet_type": packet_type,
+                                                                              "dest": dest,
+                                                                              "source": source,
+                                                                              "count": count})
     if res.status_code != 200:
         flash(message="Packets not sent %s" % dest, category="error")
     else:
@@ -58,12 +64,18 @@ def send_junk_traffic():
 
 @app.route('/sniff', methods=["POST", "GET"])
 def sniff():
+    ip_map = {
+        "192.168.1.2": "10.0.0.1",
+        "192.168.2.2": "10.0.0.2",
+        "192.168.3.2": "10.0.0.3",
+        "192.168.4.2": "10.0.0.4"
+    }
     packet_type = request.form.get('packet_type')
     source = request.form.get('source_addr')
     count = 10 if request.form.get('count') == "" else int(request.form.get('count'))
-    res = requests.post("http://%s:5080/sniff_packet" % source, data={"packet_type": packet_type,
-                                                                      "source": source,
-                                                                      "count": count})
+    res = requests.post("http://%s:5080/sniff_packet" % ip_map[source], data={"packet_type": packet_type,
+                                                                              "source": source,
+                                                                              "count": count})
     if res.status_code not in [200, 302] or res.json()["packets"] == "":
         flash(message="No packects found", category="error")
     else:
@@ -77,7 +89,8 @@ def get_metrics():
     metric_name = request.form.get('metric_name')
     params = request.form.get('params')
     agg = None
-    return json.dumps({'success': True, "metric_value": g_m.get_metric(metric_name, params, agg)}), 200, {'ContentType': 'application/json'}
+    return json.dumps({'success': True, "metric_value": g_m.get_metric(metric_name, params, agg)}), 200, {
+        'ContentType': 'application/json'}
 
 
 if __name__ == '__main__':
