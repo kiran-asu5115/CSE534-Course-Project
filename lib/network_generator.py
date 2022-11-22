@@ -9,24 +9,27 @@ from scapy.all import *
 from scapy.layers.inet import IP, TCP, UDP, ICMP
 from flask import Flask, jsonify, request
 
-from cryptography.utils import  CryptographyDeprecationWarning
+from cryptography.utils import CryptographyDeprecationWarning
 
 app = Flask(__name__)
 
 warnings.simplefilter('ignore', CryptographyDeprecationWarning)
 
-def gen_tcp_packet(src, dest, count=2000, iface="ens8"):
-    ans, unans = sr(IP(src=src, dst=dest) / TCP(dport=[3000, 5000, 6000]), inter=0.1, retry=count, timeout=1, iface=iface)
+
+def gen_tcp_packet(src, dest, count=200, iface="ens8"):
+    ans, unans = srloop(IP(src=src, dst=dest) / TCP(dport=[3000, 5000, 6000]), inter=0.01, retry=count,
+                        iface=iface)
     return ans, unans
 
 
-def gen_udp_packet(src, dest, count=2000, iface="ens8"):
-    ans, unans = sr(IP(src=src, dst=dest) / UDP(dport=[3000, 5000, 6000]), inter=0.1, retry=count, timeout=1, iface=iface)
+def gen_udp_packet(src, dest, count=200, iface="ens8"):
+    ans, unans = srloop(IP(src=src, dst=dest) / UDP(dport=[3000, 5000, 6000]), inter=0.01, count=count,
+                        iface=iface)
     return ans, unans
 
 
-def gen_icmp_packet(src, dest, count=2000, iface="ens8"):
-    ans, unans = sr(IP(src=src, dst=dest) / ICMP(), inter=0.1, retry=count, timeout=1, iface=iface)
+def gen_icmp_packet(src, dest, count=200, iface="ens8"):
+    ans, unans = srloop(IP(src=src, dst=dest) / ICMP(), count=count, iface=iface, inter=0.01)
     return ans, unans
 
 
