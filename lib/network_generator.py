@@ -31,9 +31,10 @@ def gen_icmp_packet(dest, count=2000, iface="ens8"):
 
 
 def sniff_packets(packet_type, intf="ens8", count=50):
+    print("Sniffing at %s -- " % intf)
     packets = sniff(iface=intf, count=count)
-    packets = sniff(offline=packets, filter=packet_type, prn=lambda x: "%s: "+x.summary(), count=count)
-    return "<br><br>".join(["%s: " % intf + packet.summary() for packet in packets])
+    packets = sniff(offline=packets, filter=packet_type, prn=lambda x: x.summary(), count=count)
+    return "<br><br>".join([packet.summary() for packet in packets])
 
 
 def get_interface(ip_addr=None):
