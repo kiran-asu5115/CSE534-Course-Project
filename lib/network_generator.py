@@ -71,7 +71,7 @@ def update_content():
 @app.route("/sniff_packet", methods=["POST"])
 def sniff_packet():
     packet_type = request.form.get('packet_type', None)
-    src_ip = request.form.get('source_ip')
+    src_ip = request.form.get('source')
     count = int(request.form.get('count', 2))
     intf = get_interface(src_ip)
     sniffed_packets = sniff_packets(packet_type, intf, count)
