@@ -1,88 +1,72 @@
 {% extends "base.html" %}
 {% block content %}
-    <section class="intro" style="padding-top: 30px">
-        <div class="mask d-flex align-items-center h-100">
-            <div class="container" style="max-width: 100%">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div id="refresh" class="table-responsive bg-white"
-                             style="height: 600px; overflow-y: scroll;">
-                            {% if rows %}
-                                <table class="table mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Stock</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Current Price</th>
-                                        <th scope="col">Day High</th>
-                                        <th scope="col">Day Low</th>
-                                        <th scope="col">Open Price</th>
-                                        <th scope="col">Closing Price</th>
-                                        <th scope="col">Volume</th>
-                                        <th scope="col">Market Cap.</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for row in rows %}
-                                        <tr>
-                                            <td>{{ row.stock_name }}</td>
-                                            <td>
-                                                {% if row.arrow == "arrow_drop_down" %}
-                                                    <span style="font-size: 30px; color: red"
-                                                          class="material-symbols-outlined">{{ row.arrow }}
-                                            </span>
-                                                {% else %}
-                                                    <span style="font-size: 30px; color: green"
-                                                          class="material-symbols-outlined">{{ row.arrow }}
-                                            </span>
-                                                {% endif %}
-                                            </td>
-                                            <td>{{ row.curr_price }}
-                                            </td>
-                                            <td>{{ row.day_high }}</td>
-                                            <td>{{ row.day_low }}</td>
-                                            <td>{{ row.open_price }}</td>
-                                            <td>{{ row.close_price }}</td>
-                                            <td>{{ row.volume }}</td>
-                                            <td>{{ row.mark_cap }}</td>
-                                            <td>
-                                                <button style="padding: 0px; height: 30px; width: 100px;"
-                                                        id="{{ row.id }}"
-                                                        data-id="{{ row.id }}"
-                                                        class="buysell btn btn-dark ms-3"
-                                                        onclick="buysell(this.id);">
-                                                    Buy/Sell
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            {% else %}
-                                <div class="d-flex flex-column align-items-center text-black">
-                                    <span class="material-symbols-outlined">analytics</span>
-                                    <h2>No records found</h2>
-
-                                </div>
-                            {% endif %}
-                        </div>
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h1>P4 Dynamic Routing</h1>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 col-xl-4">
+                <div class="card">
+                    <div class="card-body text-center d-flex flex-column align-items-center">
+                        <form action="{{ url_for('send_traffic') }}" method="post">
+                            <h1>Traffic Generator</h1>
+                            <div class="mb-3">
+                                <input class="form-control" type="text" name="destination_addr"
+                                       placeholder="Destination"/>
+                                <input class="form-control" type="text" name="source_addr" placeholder="Source"
+                                       style="margin-top: 10px;"/>
+                                <select id="traffic_packet_type" name="packet_type" class="form-select"
+                                        style="margin-top: 10px;">
+                                    <optgroup label="Packet Type">
+                                        <option value="udp" selected>UDP</option>
+                                        <option value="tcp">TCP</option>
+                                        <option value="icmp">ICMP</option>
+                                    </optgroup>
+                                </select><input class="form-control" type="text" name="count" placeholder="Count"
+                                                style="margin-top: 10px;"/></div>
+                            <div class="mb-3"></div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary shadow d-block w-100" type="submit"
+                                        style="margin-top: 0px;">Send it!
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="modal fade" id="empModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h3 class="modal-title text-start text-dark">Buy/Sell</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="col-md-6 col-xl-4">
+                <div class="card">
+                    <div class="card-body text-center d-flex flex-column align-items-center">
+                        <form action="{{ url_for('sniff') }}" method="post">
+                            <h1>Packet Sniffer</h1>
+                            <div class="mb-3">
+                                <input class="form-control" type="text" name="source_addr" placeholder="Source"
+                                       style="margin-top: 10px;"/>
+                                <select id="sniff_packet_type" name="packet_type" class="form-select"
+                                        style="margin-top: 10px;">
+                                    <optgroup label="Packet Type">
+                                        <option value="udp" selected>UDP</option>
+                                        <option value="tcp">TCP</option>
+                                        <option value="icmp">ICMP</option>
+                                    </optgroup>
+                                </select><input class="form-control" type="text" name="count" placeholder="Count"
+                                                style="margin-top: 10px;"/></div>
+                            <div class="mb-3"></div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary shadow d-block w-100" type="submit"
+                                        style="margin-top: 0px;">Sniff it!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body"></div>
             </div>
+
         </div>
     </div>
+</section>
 {% endblock %}
 
