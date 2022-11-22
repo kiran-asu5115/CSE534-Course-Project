@@ -6,6 +6,8 @@ import os
 import random
 from flask import Flask, jsonify, request
 
+app = Flask(__name__)
+
 def get_node_interface_info(inst_slice, avoid_networks=[]):
     node_interface_info = {}
     interfaces = slice_builder_utils.get_slice_interfaces(slice=inst_slice)
@@ -104,6 +106,7 @@ def update_route():
     # src_host, dst_host = "Host_3", "Host_4"
     # add_complete_route(inst_slice, host_routes, node_interface_info, ethernet_port_mappings, src_host, dst_host, thrift_port, pick_route=1)
     pass
+
 
 if __name__ == '__main__':
     app.config['SECRET_KEY'] = 'secret_101$'
