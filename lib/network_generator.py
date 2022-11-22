@@ -38,9 +38,12 @@ def sniff_packets(packet_type, intf="ens8", count=50):
 
 
 def get_interface(ip_addr=None):
-    if not ip_addr:
-        ip_addr = socket.gethostbyname(socket.gethostname())
     nics = psutil.net_if_addrs()
+    if ip_addr:
+        print("Getting interface for %s" % ip_addr)
+        return [i for i in nics for j in nics[i] if j.address == ip_addr and j.family == socket.AF_INET][0]
+    ip_addr = socket.gethostbyname(socket.gethostname())
+    print("Getting interface for %s" % ip_addr)
     return [i for i in nics for j in nics[i] if j.address == ip_addr and j.family == socket.AF_INET][0]
 
 
@@ -50,7 +53,7 @@ def update_content():
     dest = request.form.get('dest', None)
     src = request.form.get("source", None)
     count = int(request.form.get('count'))
-    intf = get_interface()
+    intf = get_interface(src)
     print("Sending on %s -- " % intf)
     if packet_type.lower() == "icmp":
         ans, unans = gen_icmp_packet(src, dest, count, intf)
