@@ -1,0 +1,29 @@
+Paper Review Form (based on the INFOCOM review form)
+
+Paper title: Dynamic Routing using P4 Switches and the FABRIC Measurement Framework
+Author(s): Shikhar Gupta, Kiran Sthanusubramonian
+ 
+
+1. Paper Summary: The authors propose utilizing a network monitoring system to dynamically configure routing paths on a programmable switch. The paper suggests the use of the MFLib library to collect interface-level metrics of the nodes in the network deployed on the FABRIC testbed. These metrics are used by the controller to make the routing decisions and the metrics are visualised using Kibana and Graphana. The author propose the use of two metrics - The available bandwidth of each link and buffer lengths of each interface collected by the measuring node to select a route that minimizes the latency between two hosts.
+
+
+2. Strengths: What are the main reasons to accept the paper?
+
+The paper is addressing a useful application of SDN and programmable switches. The use of a programmable switch and controller as proposed in the paper is an efficient way to implement this feature without affecting the throughput of the network. The paper clearly describes the metrics used to calculate the optimal route and the mechanism to procure the metrics using MFLib. The use of Graphana and Kibana to visualize the metrics improves the explainability of the proposed routing algorithm. The proposed framework provides a base architecture for implementing other applications. For example, the framework can be extended to implement a service mesh-like architecture which will be useful for enterprise networks. 
+
+3. Weaknesses:
+
+While the methodology in the paper is clearly defined, the proposed dynamic routing algorithm should include more details. It is not shown how the two metrics of different units - available bandwidth of each link and buffer lengths of each interface are used to decide the route with minimum latency. It would also be better to describe the algorithm used to calculate the cumulative sum of the metrics in the route (like Dijkstra's algorithm). The wording "Before packet transmission from one host to another" in Section V seems a little misleading. Shouldn't the routes be changed dynamically during packet transmission?  
+
+
+4. Quality of Writing: What is the presentation quality of this paper?
+
+The paper is well structured and organized with the objective laid out clearly. All the components in the experimental setup are introduced and explained properly. The overall quality of the paper is good. 
+
+
+5. Additional Comments: None
+
+
+6. Reviewer Expertise:
+I am familiar with this topic
+

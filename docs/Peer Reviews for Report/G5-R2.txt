@@ -1,0 +1,45 @@
+Paper Review Form (based on the INFOCOM review form)
+
+Paper title: Dynamic Routing using P4 Switches and the FABRIC Measurement Framework
+Author(s): Shikhar Gupta, Kiran Sthanusubramonian
+ 
+
+1. Paper Summary: Please summarize the paper in your own words.
+
+   The paper discusses a strategy of using packet monitoring technology as input to an algorithm to control the behavior 
+of an SDN.  It then shows an implementation of the strategy using tools available on the FABRIC testbed.  Finally, it
+details an experimental design and initial results for demonstrating the effectiveness of the strategy on a particular
+network topology.
+
+2. Strengths: What are the main reasons to accept the paper?  You may comment on the importance of the 
+   problems addressed, the novelty of the proposed solutions, the technical depth, and potential impact. 
+   Your overall rating should be supported by your review.
+
+   The paper presents a novel way to improve SDN using new technologies, those being packet monitoring technologies. 
+The idea is a potentially very beneficial one and their use of many of the more complex tools available on FABRIC will 
+no doubt help the FABRIC team and provide useful examples for future users.
+
+3. Weaknesses: What are the main reasons NOT to accept the paper? Again, think about the importance of 
+   the problems addressed, the novelty of the proposed solutions, the technical depth, and potential impact. 
+   Your overall rating should be supported by your review.
+
+   I think the paper would have been benefited by a more thorough description of the algorithm used by the controller to
+create routing tables from metrics collected by the FABRIC measurement framework.  A more thorough description of how
+the FABRIC measurement framework actually collected metrics would also have been useful.
+
+4. Quality of Writing: What is the presentation quality of this paper? A paper not well-written is not good 
+   for INFOCOM reputation and will have difficulty in attracting citations. Your overall rating should take 
+   this into consideration.
+
+   The writing was very good quality.
+
+5. Additional Comments: Additional comments that you would like to provide to the authors. Please do not
+   repeat what you stated in strengths/weaknesses.
+
+   I liked the inclusion of the acknowledgements section.
+
+6. Reviewer Expertise: Rate your familiarity with the topic of this paper.  (Choose one, delete the rest.)
+
+I know something about this topic
+
+     

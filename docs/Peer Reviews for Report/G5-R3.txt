@@ -1,0 +1,40 @@
+Group 5 Review
+Paper Review Form (based on the INFOCOM review form)
+
+Paper title: Dynamic Routing using P4 Switches and the FABRIC Measurement Framework
+Author(s): Shikhar Gupta and Kiran Sthanusubramonian
+ 
+
+1. Paper Summary: Please summarize the paper in your own words.
+
+Using P4's In-band Network Telemetry framework and the Fabric MFLib API, this project shows how to actualize the decoupling of the data and control planes yet still control optimal routing, minimize latency and avoid ossification.  The paper presents an excellent overview and background of the challenges facing modern networks, then creates a repeatable experiment on the Fabric testbed.  The experiment uses scapy to generate traffic, a measurement node which uses MFLib to share device-level and slice-level metrics and the inform dynamic routing process.  Finally, the results are represented using the popular and versatile visualization tool, Grafana.
+
+
+2. Strengths: What are the main reasons to accept the paper?  You may comment on the importance of the problems addressed, the novelty of the proposed solutions, the technical depth, and potential impact. 
+
+The paper includes excellent figures for the topology and results;  they are very helpful for laying out the problem and the author's intentions.
+
+The paper has excellent clarity, high quality writing, an ambitious vision, and produces an exciting, reproducible experiment on the Fabric testbed.
+
+I enjoyed the inclusion of future work in the paper and appreciated that the authors identified the challenge of minimizing the overhead of INT-based packets while still collecting sufficient metrics.   
+   
+Your overall rating should be supported by your review.
+
+
+3. Weaknesses: What are the main reasons NOT to accept the paper? Again, think about the importance of the problems addressed, the novelty of the proposed solutions, the technical depth, and potential impact. Your overall rating should be supported by your review.
+
+I found it difficult to find weaknesses.  Perhaps, more details could be included about how Scapy is being used in the project.
+
+4. Quality of Writing: What is the presentation quality of this paper? A paper not well-written is not good for INFOCOM reputation and will have difficulty in attracting citations. Your overall rating should take this into consideration.
+
+Top notch material, excellent inclusion of relevant and similar work while providing the compelling reasons for the project.  I feel honored to be in the same class with these authors.  :)
+
+5. Additional Comments: Additional comments that you would like to provide to the authors. Please do not repeat what you stated in strengths/weaknesses.
+
+I will definitely be borrowing your thoughtful inclusion of acknowledgements.  Very well done, looking forward to the presentation.
+
+
+6. Reviewer Expertise: Rate your familiarity with the topic of this paper.  (Choose one, delete the rest.)
+
+I know something about this topic
+     
