@@ -1,0 +1,39 @@
+Node 1: Host_1
+Node Hostname: ubuntu@129.114.110.76
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.76
+Node 2: Host_2
+Node Hostname: ubuntu@129.114.110.107
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.107
+Node 3: Host_3
+Node Hostname: ubuntu@129.114.110.94
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.94
+Node 4: Host_4
+Node Hostname: ubuntu@129.114.110.116
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.116
+Node 5: Switch_1
+Node Hostname: ubuntu@129.114.110.121
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.121
+Node 6: Switch_2
+Node Hostname: ubuntu@129.114.110.74
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.74
+Node 7: Switch_3
+Node Hostname: ubuntu@129.114.110.82
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.82
+Node 8: Switch_4
+Node Hostname: ubuntu@129.114.110.101
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.101
+Node 9: _meas_node
+Node Hostname: ubuntu@129.114.110.85
+SSH Access Command: ssh -i config/kiran_config/slice_key -F config/kiran_config/ssh_config ubuntu@129.114.110.85
+
+
+General:
+ssh -L 10010:localhost:443 -F config/kiran_config/ssh_config -i config/kiran_config/slice_key ubuntu@129.114.110.85
+ssh -L 10020:localhost:80 -F config/kiran_config/ssh_config -i config/kiran_config/slice_key ubuntu@129.114.110.85
+
+Kiran-Comp:
+ssh -L 10010:localhost:443 -F ssh_config -i slice_key ubuntu@129.114.110.85
+ssh -L 10020:localhost:80 -F ssh_config -i slice_key ubuntu@129.114.110.85
+
+user: fabric 
+pass: csMOaQg4Q6aqOFXsOpEh
