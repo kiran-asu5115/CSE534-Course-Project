@@ -30,7 +30,7 @@ def read_config(filename):
 
 
 def main():
-    slice_config_file_name = "final_topo_slice_config.json"
+    slice_config_file_name = "config_test.json"
     slice_config_path = get_slice_config_path(file_name=slice_config_file_name)
     slice_config = read_config(slice_config_path)
     s = MeasurementSlice(slice_config)
@@ -39,7 +39,7 @@ def main():
     s.configure_ips()
     s.add_config_files_to_slice_nodes()
 
-    inst_slice = Instrumentize(slice_config["slice_name"])
+    # inst_slice = Instrumentize(slice_config["slice_name"])
 
 
 if __name__ == '__main__':

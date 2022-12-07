@@ -35,15 +35,18 @@ class MeasurementSlice:
                     for nic in node["host_nic"]:
                         node_nic = component_builder_utils.add_new_component(node_comp, comp_name=nic)
                         nic_comp[nic] = node_nic
-
-                for conn in self.slice_config["conn_config"]:
-                    conn_int = []
-                    for interface in conn["interfaces"]:
-                        conn_comp = component_builder_utils.get_interface_of_component(nic_comp[interface],
-                                                                                       interface_number=1)
-                        conn_int.append(conn_comp)
-                    network_builder_utils.add_new_network_connection(self.integrated_slice, conn["name"],
-                                                                     conn_interfaces=conn_int)
+                
+                if "conn_config" in self.slice_config:
+                    for conn in self.slice_config["conn_config"]:
+                        conn_int = []
+                        for interface in conn["interfaces"]:
+                            conn_comp = component_builder_utils.get_interface_of_component(nic_comp[interface],
+                                                                                           interface_number=1)
+                            conn_int.append(conn_comp)
+                        network_builder_utils.add_new_network_connection(self.integrated_slice, conn["name"],
+                                                                         conn_interfaces=conn_int)
+                else:
+                    pass
 
                 print("Slice setup done.")
 
@@ -67,7 +70,7 @@ class MeasurementSlice:
         nodes = slice.get_nodes()
         for node in nodes:
             node_name = node.get_name()
-            self.setup_node(node_name)
+            # self.setup_node(node_name)
             self.setup_switch(node_name)
             print("Added Configuration Files to Node:", node_name)
     
@@ -90,12 +93,15 @@ class MeasurementSlice:
         return subnet, available_ips
 
     def get_slice_by_name_or_id(self, slice_id=None):
-        if self.slice_name is None and slice_id is None:
+        try:
+            if self.slice_name is None and slice_id is None:
+                slice = None
+            elif self.slice_name is not None:
+                slice = self.fablib.get_slice(name=self.slice_name)
+            else:
+                slice = self.fablib.get_slice(slice_id=slice_id)
+        except Exception as e:
             slice = None
-        elif self.slice_name is not None:
-            slice = self.fablib.get_slice(name=self.slice_name)
-        else:
-            slice = self.fablib.get_slice(slice_id=slice_id)
         return slice
 
     def get_slice_ssh_commands(self, slice_id=None):
@@ -118,10 +124,11 @@ class MeasurementSlice:
 
     def get_slice_components(self, slice_id=None):
         nodes = self.integrated_slice.get_nodes()
+        components = []
         for node in nodes:
-            components = node.get_components()
+            components += node.get_components()
             # print(vars(components[0]))
-        return 
+        return components
 
     def get_slice_interfaces(self, slice_id=None):
         slice = self.get_slice_by_name_or_id(slice_id)
@@ -148,9 +155,12 @@ class MeasurementSlice:
     def configure_ips(self):
         print("Configuring IPs for Networks in Slice")
         slice_components = self.get_slice_components()
+        if "conn_config" not in self.slice_config:
+            return
         for conn in self.slice_config["conn_config"]:
             conn_name, conn_address_list = conn["name"], conn["address_list"]
             conn_hosts = []
+            print(conn_name, conn_address_list, conn["interfaces"])
             for conn_interface in conn["interfaces"]:
                 for component in slice_components:
                     if component.get_name().endswith(conn_interface):
@@ -190,7 +200,6 @@ class MeasurementSlice:
         switch_node = None
         for node in nodes:
             switch_node = node if node.get_name() == node_name else switch_node
-
         return switch_node
 
     def setup_switch(self, switch_node_name="s1"):
@@ -200,8 +209,8 @@ class MeasurementSlice:
         prog_file_name = "p4_basic_routing_2.p4"
         self.upload_p4_program_file(switch_node, prog_file_name, prog_file_name)
         
-        config_file_name = "p4_switch_config.sh"
-        self.upload_config_file(switch_node, config_file_name, config_file_name)
+        # config_file_name = "p4_switch_config.sh"
+        # self.upload_config_file(switch_node, config_file_name, config_file_name)
     
     def setup_node(self, node_name="s1"):
         p4_slice = self.get_slice_by_name_or_id()
