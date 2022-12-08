@@ -98,6 +98,8 @@ celerybeat-schedule
 celerybeat.pid
 
 # SageMath parsed files
+.idea/*
+.DS_Store
 config/*
 config_paths.py
 *.sage.py
