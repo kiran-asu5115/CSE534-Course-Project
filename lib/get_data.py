@@ -57,7 +57,7 @@ class GetMetrics:
                 label_list = [str(key + "=" + "'" + label[key] + "'") for key in label]
                 metric = metric + "{" + ",".join(label_list) + "}"
                 metric = "%s(%s)" % (agg, metric)
-            output = self.prom.custom_query_range(metric, start_time, end_time, step="10")
+            output = self.prom.custom_query_range(metric, start_time, end_time, step="15")
 
         else:
             output = self.prom.get_metric_range_data(metric, label_config=label, start_time=start_time,
