@@ -87,7 +87,7 @@ def sniff():
 @app.route('/get_metric', methods=["POST", "GET"])
 def get_metrics():
     metric_name = request.form.get('metric_name')
-    params = request.form.get('params')
+    params = json.loads(request.form.get('params'))
     agg = None
     return json.dumps({'success': True, "metric_value": g_m.get_metric(metric_name, params, agg)}), 200, {
         'ContentType': 'application/json'}
