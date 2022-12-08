@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 import base64
 import warnings
 import datetime
@@ -63,6 +64,17 @@ class GetMetrics:
             output = self.prom.get_metric_range_data(metric, label_config=label, start_time=start_time,
                                                      end_time=end_time)
         return output[0]
+
+    
+if __name__ == '__main__':
+    dashboard_query = "node_network_receive_packets_total"
+    instance = sys.argv[1]
+    device = sys.argv[2]
+    labels = { "instance": instance, "job": "node", "device": device}
+    g = GetMetrics()
+    print(g.get_metric(dashboard_query, label=labels)
+    
+    
 
 # g = GetMetrics()
 # print(g.get_metric("node_netstat_Icmp_InMsgs", {"instance": "Switch_1", "job": "node"}))
