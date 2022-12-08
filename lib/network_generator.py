@@ -35,8 +35,14 @@ def gen_icmp_packet(src, dest, count=200, iface="ens8"):
 
 def sniff_packets(packet_type, intf="ens8", count=50):
     print("Sniffing at %s -- " % intf)
-    packets = sniff(iface=intf, count=count)
+    packets = sniff(iface=intf, count=count, timeout=5)
     packets = sniff(offline=packets, filter=packet_type, prn=lambda x: x.summary(), count=count)
+    # from datetime import datetime
+    # pkt = IP(dst="www.google.com", ttl=1) / ICMP()
+    # ans, unans = sr(pkt * 3)
+    # sent = datetime.fromtimestamp(ans[0][0].sent_time)
+    # received = datetime.fromtimestamp(ans[0][1].time)
+    # RTT = received - sent
     return "<br><br>".join([packet.summary() for packet in packets])
 
 
